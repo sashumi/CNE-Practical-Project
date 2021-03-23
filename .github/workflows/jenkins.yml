@@ -99,3 +99,15 @@ jobs:
       working-directory: ./jenkins
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
+    
+    - name: Sleep for 180 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '180s'
+
+    - name: Terraform Apply
+      working-directory: ./jenkins
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: terraform destroy -auto-approve
+
+

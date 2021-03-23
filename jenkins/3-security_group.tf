@@ -38,7 +38,7 @@ resource "aws_security_group" "jenkins_sg_22" {
     protocol = "tcp"
     cidr_blocks = [
       aws_vpc.jenkins.cidr_block,
-      "0.0.0.0/0"]
+      "130.43.176.0/24"]
   }
 
   egress {
@@ -46,7 +46,7 @@ resource "aws_security_group" "jenkins_sg_22" {
     to_port = 0
     protocol = "-1"
     cidr_blocks = [
-      "0.0.0.0/0"]
+      "130.43.176.0/24"]
   }
 
   tags = {

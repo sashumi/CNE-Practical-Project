@@ -27,6 +27,13 @@ resource "aws_instance" "jenkins" {
 }
 
 resource "aws_eip_association" "jenkins_ip" {
+  depends_on = [
+    # this part was failing when igw was taking time
+    # so as per tutorial below, adding dependency
+    # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
+    aws_internet_gateway.igw,
+    aws_instance.jenkins,
+    aws_eip.jenkins_ip]
   instance_id = aws_instance.jenkins.id
   allocation_id = aws_eip.jenkins_ip.id
 }

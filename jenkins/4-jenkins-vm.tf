@@ -1,5 +1,5 @@
-resource "aws_key_pair" "shamsi_jenkins" {
-  key_name = "shamsi_jenkins"
+resource "aws_key_pair" "jenkins_keypair" {
+  key_name = "jenkins_keypair"
   public_key = var.ssh_pubkey
 }
 
@@ -11,7 +11,7 @@ resource "aws_instance" "jenkins" {
   ami = var.ami
   availability_zone = aws_subnet.subnet1.availability_zone
   instance_type = "t2.micro"
-  key_name = aws_key_pair.shamsi_jenkins
+  key_name = aws_key_pair.jenkins_keypair.key_name
   vpc_security_group_ids = [
     aws_security_group.jenkins_sg_22.id,
     aws_security_group.jenkins_sg_80.id]

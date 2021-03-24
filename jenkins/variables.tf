@@ -1,3 +1,5 @@
+//amazon machine image id,ssh public key
+
 variable "ami" {
   // this is the latest ubuntu 20.04 version in ireland
   default = "ami-08bac620dc84221eb"

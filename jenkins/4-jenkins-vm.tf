@@ -1,3 +1,5 @@
+//create key pair,eip,instance,block device, eip association
+
 resource "aws_key_pair" "jenkins_keypair" {
   key_name = "jenkins_keypair"
   public_key = var.ssh_pubkey

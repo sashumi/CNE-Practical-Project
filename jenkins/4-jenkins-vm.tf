@@ -5,9 +5,7 @@ resource "aws_key_pair" "jenkins_keypair" {
   public_key = var.ssh_pubkey
 }
 
-resource "aws_eip" "jenkins_ip" {
-  // not adding any parameter. checking if it works
-}
+
 
 resource "aws_instance" "jenkins" {
   ami = var.ami
@@ -50,7 +48,7 @@ resource "null_resource" "install_jenkins" {
     type = "ssh"
     user = "ubuntu"
     host = aws_eip.jenkins_ip.public_ip
-    private_key = file("mykey")
+    private_key = file("jenkins_keypair")
     timeout = 60
 
   }

@@ -34,7 +34,7 @@ resource "aws_security_group" "jenkins_sg_22" {
   vpc_id = aws_vpc.jenkins.id
 
   ingress {
-    description = "open port 80"
+    description = "open port 22"
     from_port = 22
     to_port = 22
     protocol = "tcp"

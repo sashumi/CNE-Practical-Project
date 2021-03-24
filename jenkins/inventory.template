@@ -1,0 +1,4 @@
+localhost
+
+[jenkins]
+${jenkins_ip}

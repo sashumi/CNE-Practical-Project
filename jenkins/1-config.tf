@@ -1,3 +1,6 @@
+// Use github action, terraaform to build a jenkins machine
+// store .tfstate file in s3
+
 terraform {
   backend "s3" {
     bucket = "shamsi-project2"

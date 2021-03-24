@@ -1,3 +1,5 @@
+// create security group with port 22, 80
+
 resource "aws_security_group" "jenkins_sg_80" {
   name = "jenkins_sg_80"
   description = "Allow web traffic to jenkins"

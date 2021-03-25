@@ -47,11 +47,16 @@ name: 'Terraform'
 on:
   push:
     branches:
-    - main
+      - main
+    paths:
+      - 'jenkins/*'
+      - '.github/workflows/terraform.yml'
   pull_request:
     branches:
-    - main
-
+      - main
+    paths:
+      - 'jenkins/*'
+      - '.github/workflows/terraform.yml'
 jobs:
   terraform:
     name: 'Terraform'
@@ -74,6 +79,21 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_SU_IAM }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SU_IAM }}
         aws-region: eu-west-1
+
+
+    - name: download ssh key from s3
+      uses: ItsKarma/aws-cli@v1.70.0
+      with:
+        args: s3 cp s3://shamsi-project2/key/id_rsa ./jenkins/jenkins_keypair
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_SU_IAM }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_SU_IAM }}
+          AWS_DEFAULT_REGION: "eu-west-1"
+
+        #      # change file permission to avoid 'too open' error
+        #      - name: change id_rsa permission
+        #        working-directory: jenkins
+        #        run: sudo chmod 0600 mykey
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
@@ -111,3 +131,6 @@ jobs:
       run: terraform destroy -auto-approve
 
 
+    - name: remove the key files
+      working-directory: jenkins
+      run: rm -rf jenkins_keypair

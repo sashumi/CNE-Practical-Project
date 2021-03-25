@@ -1,0 +1,10 @@
+---
+- become: yes
+  hosts: all
+  name: apache-install
+  tasks:
+    - name: Update all packages
+      apt:
+        upgrade: dist
+        update_cache: yes
+        cache_valid_time: 3600

@@ -19,7 +19,7 @@ resource "aws_instance" "jenkins" {
   subnet_id = aws_subnet.subnet1.id
 
   tags = {
-    Name = "jenkinsvm"
+    Name = "jenkins vm"
   }
 
   root_block_device {

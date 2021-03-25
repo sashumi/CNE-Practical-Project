@@ -84,7 +84,7 @@ jobs:
     - name: download ssh key from s3
       uses: ItsKarma/aws-cli@v1.70.0
       with:
-        args: s3 cp s3://shamsi-project2/key/id_rsa ./jenkins/jenkins_keypair
+        args: s3 cp s3://shamsi-project2/keys/id_rsa ./jenkins/jenkins_keypair
       env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_SU_IAM }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_SU_IAM }}

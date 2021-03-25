@@ -44,6 +44,10 @@ resource "aws_subnet" "subnet3" {
   }
 }
 
+resource "aws_eip" "jenkins_ip" {
+  // not adding any parameter. checking if it works
+}
+
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.jenkins.id
@@ -51,4 +55,29 @@ resource "aws_internet_gateway" "igw" {
   tags = {
     Name = "jenkins_igw"
   }
+}
+
+# add a route table to route outbound internet traffic to Internet gateway
+resource "aws_route_table" "rtb_public" {
+  vpc_id = aws_vpc.jenkins.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
+}
+
+resource "aws_route_table_association" "rta_subnet_public" {
+  subnet_id = aws_subnet.subnet1.id
+  route_table_id = aws_route_table.rtb_public.id
+}
+
+resource "aws_route_table_association" "rtb_subnet_public" {
+  subnet_id = aws_subnet.subnet2.id
+  route_table_id = aws_route_table.rtb_public.id
+}
+
+resource "aws_route_table_association" "rtc_subnet_public" {
+  subnet_id = aws_subnet.subnet3.id
+  route_table_id = aws_route_table.rtb_public.id
 }

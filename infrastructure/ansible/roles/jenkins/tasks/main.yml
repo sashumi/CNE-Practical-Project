@@ -9,3 +9,76 @@
   tags:
     - always
     - all_repo
+
+
+- name: "1 - include awscliv2"
+  include: 1-awscliv2.yml
+  tags:
+    - never
+    - all_repo
+
+
+
+- name: "2 - include repo lists"
+  include: 2-apt-repos.yml
+  tags:
+    - always
+    - all_repo
+
+
+#====================== repos added, update cache ===========================#
+
+- name: update_apt_cache
+  apt:
+    upgrade: dist
+    update_cache: yes
+    cache_valid_time: 60
+  register: result
+  retries: 3
+  delay: 10
+  until: result is not failed
+
+- name: update_apt
+  # probably dont need this.
+  apt:
+    name: "*"
+    state: latest
+  register: result
+  retries: 3
+  delay: 10
+  until: result is not failed
+
+#====================== cache updated, begin install =========================#
+
+- name: "3 - include essential packages"
+  include: 3-essential-packages.yml
+  tags:
+    - always
+    - essentials
+    - all_tools
+
+
+- name: "4 - include docker"
+  include: 4-docker-config.yml
+  tags:
+    - never
+    - docker
+    - all_tools
+
+
+- name: "5 - include jenkins"
+  include: 5-jenkins-config.yml
+  tags:
+    - never
+    - jenkins
+    - all_tools
+
+
+- name: "6 - include nginx"
+  include: 6-nginx-jenkins-config.yml
+  tags:
+    - never
+    - nginx
+    - all_tools
+
+

@@ -1,9 +1,9 @@
 //create key pair,eip,instance,block device, eip association
 
-resource "aws_key_pair" "jenkins_keypair" {
-  key_name = "jenkins_keypair"
-  public_key = var.ssh_pubkey
-}
+//resource "aws_key_pair" "jenkins_keypair" {
+//  key_name = "jenkins_keypair"
+//  public_key = var.ssh_pubkey
+//}
 
 
 
@@ -39,33 +39,32 @@ resource "aws_eip_association" "jenkins_ip" {
   allocation_id = aws_eip.jenkins_ip.id
 }
 
-resource "null_resource" "install_jenkins" {
-
-  depends_on = [
-    aws_eip_association.jenkins_ip]
-
-  connection {
-    type = "ssh"
-    user = "ubuntu"
-    host = aws_eip.jenkins_ip.public_ip
-    private_key = file("jenkins_keypair")
-    timeout = 60
-
-  }
+//resource "null_resource" "install_jenkins" {
+//
+//  depends_on = [
+//    aws_eip_association.jenkins_ip]
+//
+//  connection {
+//    type = "ssh"
+//    user = "ubuntu"
+//    host = aws_eip.jenkins_ip.public_ip
+//    private_key = file("jenkins_keypair")
+//    timeout = 60
+//
+//  }
 
   //  provisioner "file" {
   //    source = "ansible/inventory"
   //    destination = "/tmp/inventory"
   //  }
 
-  provisioner "file" {
-    source = "ansible/play.yml"
-    destination = "/tmp/play.yml"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt -y update && sudo apt -y install ansible && ansible-playbook -i /tmp/inventory /tmp/play.yml"
-    ]
-  }
-}
+//  provisioner "file" {
+//    source = "ansible/play.yml"
+//    destination = "/tmp/play.yml"
+//  }
+//
+//  provisioner "remote-exec" {
+//    inline = [
+//      "sudo apt -y update && sudo apt -y install ansible && ansible-playbook -i /tmp/inventory /tmp/play.yml"
+//    ]
+//  }

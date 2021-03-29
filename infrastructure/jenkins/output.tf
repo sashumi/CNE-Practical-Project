@@ -10,6 +10,8 @@ resource "local_file" "jenkins_inventory" {
  content = templatefile("inventory.template",
  {
   jenkins_ip = aws_eip.jenkins_ip.public_ip,
+  jenkins_elb = aws_elb.jenkins_elb.dns_name,
+
  }
  )
  filename = "jenkins_inventory"

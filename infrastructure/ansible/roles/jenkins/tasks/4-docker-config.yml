@@ -1,0 +1,45 @@
+---
+# installing docker is easy, just add users to docker group and restart
+
+- name: install docker
+  apt:
+    pkg:
+      - docker-ce
+  register: result
+  retries: 3
+  delay: 10
+  until: result is not failed
+
+
+- name: ensure group "docker" exists
+  ansible.builtin.group:
+    name: docker
+    state: present
+
+
+- name: add jenkins user to docker group
+  ansible.builtin.user:
+    name: jenkins
+    groups: docker
+    append: yes
+
+
+- name: add ubuntu user to docker group
+  ansible.builtin.user:
+    name: ubuntu
+    groups: docker
+    append: yes
+
+
+- name: enable docker to start when vm is rebooted
+  # Using example from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html#examples
+  ansible.builtin.systemd:
+    name: docker
+    enabled: yes
+
+
+- name: ensure docker is up and running
+  service:
+    name: docker
+    state: restarted
+    enabled: yes

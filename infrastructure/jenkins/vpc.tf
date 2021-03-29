@@ -1,83 +1,101 @@
-//create vpc, subnet,IG
+// create vpc,igw,subnet, route table, eip
 
-resource "aws_vpc" "jenkins" {
-
-  cidr_block = "10.10.0.0/16"
+resource "aws_vpc" "project_vpc" {
+  cidr_block = var.vpc_cidr
   instance_tenancy = "default"
-  enable_dns_hostnames = true # not sure what this is, but using from example
-  enable_dns_support = true # not sure what this is, but using from example
-
-  tags = merge(
-  {
-    "Name" = "jenkins"
-  }
-  )
-}
-
-resource "aws_subnet" "subnet1" {
-  vpc_id = aws_vpc.jenkins.id
-  availability_zone = "eu-west-1a"
-  cidr_block = "10.10.10.0/24"
-
+  enable_dns_support = true
+  enable_dns_hostnames = true
   tags = {
-    Name = "subnet1"
+    Name = "sashumi_project_vpc",
+    Project = "project2",
+    Author = "sashumi"
   }
 }
 
-resource "aws_subnet" "subnet2" {
-  vpc_id = aws_vpc.jenkins.id
-  availability_zone = "eu-west-1b"
-  cidr_block = "10.10.20.0/24"
-
+resource "aws_internet_gateway" "project_igw" {
+  vpc_id = aws_vpc.project_vpc.id
   tags = {
-    Name = "subnet2"
+    Name = "sashumi_project_vpc_project_igw",
+    Project = "project2",
+    Author = "sashumi"
   }
 }
 
-resource "aws_subnet" "subnet3" {
-  vpc_id = aws_vpc.jenkins.id
+#reference https://stackoverflow
+#.com/questions/51196693/terraform-how-to-create-multiple-aws-subnets-from
+#-one-resource-block
+resource "aws_subnet" "jenkins_subnet" {
+  vpc_id = aws_vpc.project_vpc.id
+  cidr_block = "10.10.1.0/24"
   availability_zone = "eu-west-1c"
-  cidr_block = "10.10.30.0/24"
-
   tags = {
-    Name = "subnet3"
+    Name = "jenkins_subnet",
+    Project = "project2",
+    Author = "sashumi"
   }
+}
+
+
+# add a route table to route outbound internet traffic to Internet gateway
+resource "aws_route_table" "jenkins_route_table" {
+  vpc_id = aws_vpc.project_vpc.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.project_igw.id
+  }
+  tags = {
+    Name = "jenkins_route_table",
+    Project = "project2",
+    Author = "sashumi"
+  }
+}
+
+
+resource "aws_route_table_association" "rta_jenkins_subnet" {
+  subnet_id = aws_subnet.jenkins_subnet.id
+  route_table_id = aws_route_table.jenkins_route_table.id
+
 }
 
 resource "aws_eip" "jenkins_ip" {
-  // not adding any parameter. checking if it works
-}
-
-
-resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.jenkins.id
-
   tags = {
-    Name = "jenkins_igw"
+    Name = "jenkins_ip",
+    Project = "project2",
+    Author = "sashumi"
   }
 }
+
+// create elb, subnet,route table
+
+resource "aws_subnet" "elb_subnet" {
+  vpc_id = aws_vpc.project_vpc.id
+  cidr_block = "10.10.10.0/24"
+  availability_zone = "eu-west-1c"
+  tags = {
+    Name = "elb_subnet",
+    Project = "project2",
+    Author = "sashumi"
+  }
+}
+
 
 # add a route table to route outbound internet traffic to Internet gateway
-resource "aws_route_table" "rtb_public" {
-  vpc_id = aws_vpc.jenkins.id
+resource "aws_route_table" "elb_route_table" {
+  vpc_id = aws_vpc.project_vpc.id
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
+    gateway_id = aws_internet_gateway.project_igw.id
   }
-
+  tags = {
+    Name = "elb_route_table",
+    Project = "project2",
+    Author = "sashumi"
+  }
 }
 
-resource "aws_route_table_association" "rta_subnet_public" {
-  subnet_id = aws_subnet.subnet1.id
-  route_table_id = aws_route_table.rtb_public.id
-}
 
-resource "aws_route_table_association" "rtb_subnet_public" {
-  subnet_id = aws_subnet.subnet2.id
-  route_table_id = aws_route_table.rtb_public.id
-}
+resource "aws_route_table_association" "rta_elb_subnet" {
+  subnet_id = aws_subnet.elb_subnet.id
+  route_table_id = aws_route_table.elb_route_table.id
 
-resource "aws_route_table_association" "rtc_subnet_public" {
-  subnet_id = aws_subnet.subnet3.id
-  route_table_id = aws_route_table.rtb_public.id
 }

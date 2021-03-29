@@ -1,9 +1,13 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('Pre-Staging') {
       steps {
-        sh 'echo "hello jenkins"'
+        sh '''pwd'''
+        sh '''ls -lahrt'''
+        sh '''ls -lahrt infrastructure/jenkins'''
+        sh '''ls -lahrt infrastructure/ansible'''
+        sh '''ls -lahrt infrastructure/dev_docker'''
       }
     }
 

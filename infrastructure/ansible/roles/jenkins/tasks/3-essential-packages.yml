@@ -1,0 +1,24 @@
+---
+# this task is to install some essential apps on the jenkins server
+- name: install essentials
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - docker-compose
+      - git
+      - jq
+      - kubectl
+      - mysql-client
+      - nano
+      - openjdk-11-jre
+      - python-pytest
+      - python3-pip
+      - software-properties-common
+      - terraform
+
+
+- name: install ansible on the jenkins machine
+  pip:
+    name:
+      - ansible>2.10.6,<3.0

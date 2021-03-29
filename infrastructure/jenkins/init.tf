@@ -25,5 +25,9 @@ provider "aws" {
 resource "aws_key_pair" "jenkins_keypair" {
   key_name = "jenkins_keypair"
   public_key = var.ssh_pubkey
+  tags = {
+    Name = "jenkins_keypair",
+    Project = "project2",
+    Author = "sashumi"
+  }
 }
-

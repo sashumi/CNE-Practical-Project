@@ -3,7 +3,5 @@
   remote_user: ubuntu
   become: yes
 
-
-
-
-    # optionally using tags to update specific component
+  roles:
+    - jenkins

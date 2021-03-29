@@ -13,3 +13,8 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+resource "aws_key_pair" "jenkins_keypair" {
+  key_name = "jenkins_keypair"
+  public_key = var.ssh_pubkey
+}
+

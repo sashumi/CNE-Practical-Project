@@ -3,7 +3,7 @@
 resource "aws_security_group" "jenkins_sg_80" {
   name = "jenkins_sg_80"
   description = "Allow web traffic to jenkins"
-  vpc_id = aws_vpc.jenkins.id
+  vpc_id = aws_vpc.project_vpc.id
 
   ingress {
     description = "open port 80"
@@ -11,7 +11,7 @@ resource "aws_security_group" "jenkins_sg_80" {
     to_port = 80
     protocol = "tcp"
     cidr_blocks = [
-      aws_vpc.jenkins.cidr_block,
+      aws_vpc.project_vpc.cidr_block,
       "0.0.0.0/0"]
   }
 
@@ -31,7 +31,7 @@ resource "aws_security_group" "jenkins_sg_80" {
 resource "aws_security_group" "jenkins_sg_22" {
   name = "jenkins_sg_22"
   description = "Allow web traffic to jenkins"
-  vpc_id = aws_vpc.jenkins.id
+  vpc_id = aws_vpc.project_vpc.id
 
   ingress {
     description = "open port 22"
@@ -39,7 +39,7 @@ resource "aws_security_group" "jenkins_sg_22" {
     to_port = 22
     protocol = "tcp"
     cidr_blocks = [
-      aws_vpc.jenkins.cidr_block,
+      aws_vpc.project_vpc.cidr_block,
       "130.43.176.0/24"]
   }
 

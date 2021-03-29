@@ -1,0 +1,16 @@
+---
+# from time to time we will need to use aws cli ont he machine,
+# so we are going to install the cli tool from aws using the following tasks.
+# basic instructions are on this page:
+# https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+- name: download awscli v2
+  ansible.builtin.unarchive:
+    src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /tmp/
+    remote_src: yes
+
+
+- name: run installer with --update flag, in case it is already installed
+  ansible.builtin.shell:
+    cmd: ./aws/install --update
+    chdir: /tmp/

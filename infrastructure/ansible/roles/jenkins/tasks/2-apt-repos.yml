@@ -1,0 +1,52 @@
+---
+# from time to time, we need to install new repositories on ubuntu
+# so starting a set of task to add private keys and urls.
+- name: add docker key for apt
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+
+- name: add docker repository
+  ansible.builtin.apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+
+- name: add jenkins key for apt
+  ansible.builtin.apt_key:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+    state: present
+
+
+- name: add jenkins repository
+  ansible.builtin.apt_repository:
+    repo: deb https://pkg.jenkins.io/debian-stable binary/
+    state: present
+
+
+# tasks file for repo_installer
+# https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using
+#  -native-package-management
+- name: add google key for apt
+  ansible.builtin.apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+
+- name: add jenkins repository
+  ansible.builtin.apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+
+
+- name: add hashicorp key for apt
+  ansible.builtin.apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
+
+
+- name: add hashicorp repository
+  ansible.builtin.apt_repository:
+    repo: deb https://apt.releases.hashicorp.com focal main
+    state: present

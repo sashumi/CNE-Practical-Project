@@ -1,0 +1,28 @@
+---
+# add jenkins installer
+
+- name: install jenkins
+  apt:
+    pkg:
+      - jenkins
+      - junit
+      - maven
+  register: result
+  retries: 3
+  delay: 10
+  until: result is not failed
+
+
+- name: enable jenkins to start when vm is rebooted
+  # Using example from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html#examples
+  ansible.builtin.systemd:
+    name: jenkins
+    enabled: yes
+
+
+- name: ensure jenkins is started
+  # Using example from https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html#examples
+  ansible.builtin.systemd:
+    name: jenkins
+    enabled: yes
+    state: started

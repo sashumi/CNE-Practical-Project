@@ -8,6 +8,7 @@ pipeline {
         sh '''ls -lahrt infrastructure/jenkins'''
         sh '''ls -lahrt infrastructure/ansible'''
         sh '''ls -lahrt infrastructure/dev_docker'''
+        sh '''cat .gitignore'''
       }
     }
 

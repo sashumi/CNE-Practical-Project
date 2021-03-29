@@ -1,0 +1,11 @@
+---
+# tasks file for jenkins
+
+- name: install unzip and curl before installing awscliv2
+  apt:
+    pkg:
+      - unzip
+      - curl
+  tags:
+    - always
+    - all_repo

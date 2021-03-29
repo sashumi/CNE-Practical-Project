@@ -1,4 +1,7 @@
 //amazon machine image id,ssh public key
+variable "vpc_cidr" {
+  default = "10.10.0.0/16"
+}
 
 variable "ami" {
   // this is the latest ubuntu 20.04 version in ireland

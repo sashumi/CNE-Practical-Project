@@ -12,5 +12,5 @@ resource "local_file" "AnsibleInventory" {
   jenkins_ip = aws_eip.jenkins_ip.public_ip,
  }
  )
- filename = "ansible/inventory"
+ filename = "inventory"
 }

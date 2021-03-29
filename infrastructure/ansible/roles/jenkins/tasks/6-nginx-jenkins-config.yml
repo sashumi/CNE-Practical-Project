@@ -1,0 +1,41 @@
+---
+## using as shown on tutorial here:
+## https://geektechstuff.com/2020/05/05/installing-and-configuring-nginx-as-a-reverse-proxy-via-an-ansible-playbook/
+#    - name: Disable NGINX Default Virtual Host
+#      become: yes
+#      command:
+#        cmd: unlink /etc/nginx/sites-enabled/default
+- name: install nginx
+  apt:
+    pkg:
+      - nginx
+  register: result
+  retries: 3
+  delay: 10
+  until: result is not failed
+
+
+- name: disable existing host configuration
+  ansible.builtin.file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+
+- name: add jenkins config
+  template:
+    src: jenkins_nginx.j2
+    dest: /etc/nginx/sites-available/jenkins_nginx.conf
+
+- name: create a symbolic link to nginx configuration file
+  ansible.builtin.file:
+    src: /etc/nginx/sites-available/jenkins_nginx.conf
+    dest: /etc/nginx/sites-enabled/jenkins_nginx.conf
+    state: link
+
+
+- name: ensure nginx is up and running
+  become: yes
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes

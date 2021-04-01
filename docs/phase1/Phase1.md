@@ -45,3 +45,14 @@ Creating sa_container ... done
 C:\Users\shumi\PycharmProjects\CNE-Practical-Project\dev_docker>
 
 ```
+
+# How to find the docker container using GUI?
+
+By pressing 'Alt+8' the Docker service console is opened on Pycharm.
+![](images/7-docker-service-console-on-pycharm.PNG)
+
+As default, we only see the word Docker and a green play button. Once clicked, we then can see current docker containers.
+![](images/8-docker-service-dev.PNG)
+
+
+

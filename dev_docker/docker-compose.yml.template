@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  sa_dev:
+    build: .
+    image: sa_docker:latest
+    container_name: sa_container
+    environment:
+      AWS_ACCESS_KEY_ID: <put key id>
+      AWS_SECRET_ACCESS_KEY: <put secret access key>
+      AWS_DEFAULT_REGION: eu-west-1

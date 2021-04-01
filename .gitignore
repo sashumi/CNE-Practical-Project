@@ -1,4 +1,4 @@
 .idea
-.terraform
-.terraform*
+*.terraform*
 dev_docker/docker-compose.yml
+infrastructure/jenkins/jenkins_inventory

@@ -1,0 +1,16 @@
+pipeline {
+  agent any
+  stages {
+    stage('Pre-Staging') {
+      steps {
+        sh '''pwd'''
+        sh '''ls -lahrt'''
+        sh '''ls -lahrt infrastructure/jenkins'''
+        sh '''ls -lahrt infrastructure/ansible'''
+        sh '''ls -lahrt infrastructure/dev_docker'''
+        sh '''cat .gitignore'''
+      }
+    }
+
+  }
+}

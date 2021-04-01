@@ -12,3 +12,6 @@ RUN yum install -y yum-utils && \
 
 COPY getset_rsa_keys.sh /root/getset_rsa_keys.sh
 RUN chmod +x /root/getset_rsa_keys.sh
+
+COPY .bashrc /root/.bashrc
+COPY .bash_profile /root/.bash_profile

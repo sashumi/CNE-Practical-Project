@@ -1,0 +1,4 @@
+localhost
+
+[pytestvm]
+${pytestvm_ip}

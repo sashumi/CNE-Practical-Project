@@ -3,18 +3,20 @@ pipeline {
   stages {
     stage('Pre-Staging') {
       steps {
-        sh '''pwd'''
-        sh '''ls -lahrt'''
-        sh '''ls -lahrt infrastructure/pytest_vm'''
+        sh 'pwd'
+        sh 'ls -lahrt'
+        sh 'ls -lahrt infrastructure/pytest_vm'
       }
     }
-    stage('Terraform Apply') {
+
+    stage('Terraform Deploy') {
       steps {
-        sh '''cd infrastructure/pytest_vm'''
-        sh '''terraform init'''
-        sh '''terraform plan'''
-        sh '''terraform apply --auto-approve'''
+        sh '''cd infrastructure/pytest_vm
+terraform init
+terraform plan
+terraform apply --auto-approve'''
       }
     }
+
   }
 }

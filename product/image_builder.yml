@@ -2,12 +2,14 @@
 - hosts: "localhost"
 
   tasks:
+    # I am planning to use Jenkins-Dockerhub plugin to push images
+    # https://github.com/jenkinsci/dockerhub-notification-plugin/blob/master/README.md
     - name: build & push backend image
       community.docker.docker_image:
         build:
           path: ./backend
         name: sashumi/cne_backend
-        tag: v1
+        tag: latest
         push: yes
 
     - name: build & push frontend image
@@ -15,7 +17,7 @@
         build:
           path: ./frontend
         name: sashumi/cne_frontend
-        tag: v1
+        tag: latest
         push: yes
 
     - name: build & push database image
@@ -23,5 +25,5 @@
         build:
           path: ./database
         name: sashumi/cne_database
-        tag: v1
+        tag: latest
         push: yes

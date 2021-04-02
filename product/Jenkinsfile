@@ -1,0 +1,12 @@
+pipeline {
+  agent any
+  stages {
+    stage('Build & Test') {
+      steps {
+        sh '''cd product
+              ansible-playbook docker_builder.yml '''
+      }
+    }
+
+  }
+}

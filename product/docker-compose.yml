@@ -1,0 +1,39 @@
+version: "3.3"
+
+services:
+  mysql:
+    build: ./database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: testrootpass
+    ports:
+      - "3306:3306"
+
+  backend:
+    depends_on:
+      - mysql
+    build: ./backend
+    image: sashumi/back_end:test
+    container_name: backend
+    ports:
+    - target: 5001
+      published: 5001
+      protocol: tcp
+    environment:
+      DATABASE_URI: 'mysql+pymysql://root:testrootpass@mysql/users'
+      TEST_DATABASE_URI: 'mysql+pymysql://root:testrootpass@mysql/users'
+      SECRET_KEY: testrootpass
+    links:
+        - mysql
+
+  frontend:
+    depends_on:
+      - mysql
+      - backend
+    build: ./frontend
+    image: sashumi/front_end:test
+    container_name: frontend
+    ports:
+    - target: 5000
+      published: 5000
+      protocol: tcp

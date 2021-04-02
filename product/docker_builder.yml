@@ -1,0 +1,18 @@
+---
+- hosts: "localhost"
+  remote_user: ubuntu
+  become: yes
+
+
+  tasks:
+    - name: copy backend source
+      ansible.builtin.copy:
+        src: product/
+        dest: /home/ubuntu/product/
+
+    - name: Run `docker-compose up` again
+      community.docker.docker_compose:
+        project_src: /home/ubuntu/product
+        build: yes
+      register: output
+

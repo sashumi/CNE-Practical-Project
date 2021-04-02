@@ -4,10 +4,14 @@ pipeline {
     stage('Test Deploy Nginx') {
       steps {
         sh '''cd product/kubernetes
+              pwd
+              ls -lahrt
+              echo $PWD
+              echo "---------------------------------"
               kubectl delete pods --all -n cne
-              kubectl apply -f product/kubernetes/namespace.yaml
-              kubectl apply -f product/kubernetes/nginx-conf.yaml
-              kubectl apply -f product/kubernetes/nginx-lb.yaml -f product/kubernetes/nginx.yaml
+              kubectl apply -f $PWD/namespace.yaml
+              kubectl apply -f $PWD/nginx-conf.yaml
+              kubectl apply -f $PWD/nginx-lb.yaml -f $PWD/nginx.yaml
               kubectl describe service nginx-lb -n cne
 '''
       }

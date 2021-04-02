@@ -1,0 +1,63 @@
+---
+- hosts: "localhost"
+
+  tasks:
+    # I am planning to use Jenkins-Dockerhub plugin to push images
+    # https://github.com/jenkinsci/dockerhub-notification-plugin/blob/master/README.md
+    # https://docs.ansible.com/ansible/latest/collections/community/docker/docker_image_module.html#examples
+    - name: build backend image
+      community.docker.docker_image:
+        build:
+          path: ./backend
+        name: sashumi/cne_backend
+        tag: latest
+      tags:
+        - build
+    - name: build frontend image
+      community.docker.docker_image:
+        build:
+          path: ./frontend
+        name: sashumi/cne_frontend
+        tag: latest
+      tags:
+        - build
+
+    - name: build database image
+      community.docker.docker_image:
+        build:
+          path: ./database
+        name: sashumi/cne_database
+        tag: latest
+      tags:
+        - build
+
+    - name: push backend image
+      community.docker.docker_image:
+        name: sashumi/cne_backend
+        tag: latest
+        source: local
+        push: yes
+      tags:
+        - push
+
+    - name: push frontend image
+      community.docker.docker_image:
+        build:
+          path: ./frontend
+        name: sashumi/cne_frontend
+        tag: latest
+        source: local
+        push: yes
+      tags:
+        - push
+
+    - name: push database image
+      community.docker.docker_image:
+        build:
+          path: ./database
+        name: sashumi/cne_database
+        tag: latest
+        source: local
+        push: yes
+      tags:
+        - push

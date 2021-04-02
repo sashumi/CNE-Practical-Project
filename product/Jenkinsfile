@@ -3,30 +3,23 @@ pipeline {
   stages {
     stage('Build images') {
       steps {
-        sh '''mkdir -p ~/.docker
-              aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json ~/.docker/config.json
-              cd product
-              ansible-playbook image_builder.yml'''
+        sh '''cd product
+              ansible-playbook image_creator.yml --tags build'''
       }
     }
 
     stage('Perform local testing ') {
       steps {
-        sh 'echo "this is where I test using docker compose on pytest vm"'
+        sh '''docker exec backend bash -c "pytest tests/ --cov application"'''
       }
     }
 
     stage('Push images to dockerhub') {
       steps {
-        sh 'echo "this is where i push image to dockerhub" '
+        sh '''mkdir -p ~/.docker
+            aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json ~/.docker/config.json
+            ansible-playbook image_creator.yml --tags push'''
       }
     }
-
-    stage('Deploy to EKS') {
-      steps {
-        sh 'echo "This where I use kubectl to deploy to EKS"'
-      }
-    }
-
   }
 }

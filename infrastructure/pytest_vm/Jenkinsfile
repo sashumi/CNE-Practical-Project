@@ -14,7 +14,15 @@ pipeline {
         sh '''cd infrastructure/pytest_vm
 terraform init
 terraform plan
-terraform apply --auto-approve'''
+terraform apply --auto-approve
+mkdir -p ~/.ssh
+aws s3 cp s3://shamsi-project2/keys/id_rsa ~/.ssh/
+aws s3 cp s3://shamsi-project2/keys/id_rsa.pub ~/.ssh/
+chmod 0600 ~/.ssh
+chmod 0600 ~/.ssh/*
+eval `ssh-agent`
+ssh-add ~/.ssh/id_rsa.pub
+ansible-playbook -i pytest_inventory ../ansible/pytestvm_provisioner.yml --tags all_repo,docker'''
       }
     }
 

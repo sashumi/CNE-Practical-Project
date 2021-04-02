@@ -4,12 +4,14 @@
   tasks:
     # I am planning to use Jenkins-Dockerhub plugin to push images
     # https://github.com/jenkinsci/dockerhub-notification-plugin/blob/master/README.md
+    # https://docs.ansible.com/ansible/latest/collections/community/docker/docker_image_module.html#examples
     - name: build & push backend image
       community.docker.docker_image:
         build:
           path: ./backend
         name: sashumi/cne_backend
         tag: latest
+        source: build
         push: yes
 
     - name: build & push frontend image
@@ -18,6 +20,7 @@
           path: ./frontend
         name: sashumi/cne_frontend
         tag: latest
+        source: build
         push: yes
 
     - name: build & push database image
@@ -26,4 +29,5 @@
           path: ./database
         name: sashumi/cne_database
         tag: latest
+        source: build
         push: yes

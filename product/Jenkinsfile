@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Build images') {
       steps {
-        sh '''echo "here I build images"
-'''
+        sh '''cd product
+              ansible-playbook image_builder.yml'''
       }
     }
 

@@ -17,10 +17,11 @@ terraform plan
 terraform apply --auto-approve
 mkdir -p ssh
 aws s3 cp s3://shamsi-project2/keys/id_rsa .
-chown 0700 id_rsa
-eval `ssh-agent`
-ssh-add id_rsa
-ansible-playbook -i pytest_inventory ../ansible/pytestvm_provisioner.yml --tags all_repo,docker --skip-tags jenkins,nginx'''
+ansible-playbook -i pytest_inventory \
+    ../ansible/pytestvm_provisioner.yml \
+    --tags all_repo,docker \
+    --skip-tags jenkins,nginx\
+    --private-key id_rsa'''
       }
     }
 

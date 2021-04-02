@@ -11,14 +11,17 @@
           path: ./backend
         name: sashumi/cne_backend
         tag: latest
+        source: build
       tags:
         - build
+
     - name: build frontend image
       community.docker.docker_image:
         build:
           path: ./frontend
         name: sashumi/cne_frontend
         tag: latest
+        source: build
       tags:
         - build
 
@@ -28,6 +31,7 @@
           path: ./database
         name: sashumi/cne_database
         tag: latest
+        source: build
       tags:
         - build
 

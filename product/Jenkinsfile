@@ -10,7 +10,10 @@ pipeline {
 
     stage('Perform local testing ') {
       steps {
-        sh '''docker exec backend bash -c "pytest tests/ --cov application"'''
+        sh '''cd product
+              docker-compose down
+              docker-compose up -d --build
+              docker exec backend bash -c "pytest tests/ --cov application"'''
       }
     }
 

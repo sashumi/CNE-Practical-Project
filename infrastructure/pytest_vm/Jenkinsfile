@@ -8,7 +8,7 @@ pipeline {
         sh '''ls -lahrt infrastructure/pytest_vm'''
       }
     }
-    stage('Pre-Staging') {
+    stage('Terraform Apply') {
       steps {
         sh '''cd infrastructure/pytest_vm'''
         sh '''terraform init'''

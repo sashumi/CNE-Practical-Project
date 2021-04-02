@@ -1,11 +1,28 @@
 pipeline {
   agent any
   stages {
-    stage('Build & Test') {
+    stage('Build images') {
       steps {
-        sh '''cd product
-              ansible-playbook docker_builder.yml
+        sh '''echo "here I build images"
 '''
+      }
+    }
+
+    stage('Perform local testing ') {
+      steps {
+        sh 'echo "this is where I test using docker compose on pytest vm"'
+      }
+    }
+
+    stage('Push images to dockerhub') {
+      steps {
+        sh 'echo "this is where i push image to dockerhub" '
+      }
+    }
+
+    stage('Deploy to EKS') {
+      steps {
+        sh 'echo "This where I use kubectl to deploy to EKS"'
       }
     }
 

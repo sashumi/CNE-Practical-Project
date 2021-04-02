@@ -8,16 +8,16 @@
 #    - name: copy backend source
 #      ansible.builtin.copy:
 #        src: product/
-#        dest: /home/ubuntu/product/
+#        dest: product/
 
     - name: docker-compose down existing services
       community.docker.docker_compose:
-        project_src: /home/ubuntu/product
+        project_src: .
         state: absent
 
     - name: docker-compose up -d services
       community.docker.docker_compose:
-        project_src: /home/ubuntu/product
+        project_src: .
         build: no
 
     - name: run backend unit test
@@ -30,5 +30,5 @@
 
     - name: docker-compose down existing services
       community.docker.docker_compose:
-        project_src: /home/ubuntu/product
+        project_src: .
         state: absent

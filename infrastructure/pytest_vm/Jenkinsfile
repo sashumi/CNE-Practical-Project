@@ -1,0 +1,20 @@
+pipeline {
+  agent any
+  stages {
+    stage('Pre-Staging') {
+      steps {
+        sh '''pwd'''
+        sh '''ls -lahrt'''
+        sh '''ls -lahrt infrastructure/pytest_vm'''
+      }
+    }
+    stage('Pre-Staging') {
+      steps {
+        sh '''cd infrastructure/pytest_vm'''
+        sh '''terraform init'''
+        sh '''terraform plan'''
+        sh '''terraform apply --auto-approve'''
+      }
+    }
+  }
+}

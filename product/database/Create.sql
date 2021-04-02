@@ -1,4 +1,5 @@
-CREATE DATABASE testdb;
+--CREATE DATABASE testdb;
+-- the test stage fails if the above is active. commenting out until resolution.
 CREATE DATABASE users;
 USE users;
 

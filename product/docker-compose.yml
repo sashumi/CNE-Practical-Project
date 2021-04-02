@@ -2,7 +2,8 @@ version: "3.3"
 
 services:
   mysql:
-    image: sashumi/cne_database:latest
+    build: ./database
+    image: sashumi/cne_database:test
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: testrootpass
@@ -12,7 +13,8 @@ services:
   backend:
     depends_on:
       - mysql
-    image: sashumi/cne_backend:latest
+    build: ./backend
+    image: sashumi/cne_backend:test
     container_name: backend
     ports:
     - target: 5001
@@ -29,7 +31,8 @@ services:
     depends_on:
       - mysql
       - backend
-    image: sashumi/cne_frontend:latest
+    build: ./frontend
+    image: sashumi/cne_frontend:test
     container_name: frontend
     ports:
     - target: 5000

@@ -17,6 +17,7 @@ terraform plan
 terraform apply --auto-approve
 mkdir -p ssh
 aws s3 cp s3://shamsi-project2/keys/id_rsa .
+export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook -i pytest_inventory \
     ../ansible/pytestvm_provisioner.yml \
     --tags all_repo,docker \

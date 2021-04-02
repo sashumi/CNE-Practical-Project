@@ -7,6 +7,7 @@ pipeline {
               echo "Tear down containers"
               docker-compose down
               docker-compose up -d --build
+              sleep 30
               echo "attempt backend testing"
               docker exec backend bash -c "pytest tests/ --cov application"
               echo "attempt frontend testing"

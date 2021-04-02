@@ -1,19 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('Test Deploy Nginx') {
+    stage('') {
       steps {
-        sh '''cd product/kubernetes
-              pwd
-              ls -lahrt
-              echo $PWD
-              echo "---------------------------------"
-              kubectl delete pods --all -n cne
-              kubectl apply -f $PWD/namespace.yaml
-              kubectl apply -f $PWD/nginx-conf.yaml
-              kubectl apply -f $PWD/nginx-lb.yaml -f $PWD/nginx.yaml
-              kubectl describe service nginx-lb -n cne
-'''
+        sh '''cd product
+
+kubectl delete pods --all -n cne
+kubectl apply -f namespace.yaml
+kubectl apply -f nginx-conf.yaml
+kubectl apply -f nginx-lb.yaml -f nginx.yaml -f flask-app.yaml -f flask-cip.yaml -f backend-cip.yaml -f backend.yaml
+kubectl describe service nginx-lb -n cne'''
       }
     }
 

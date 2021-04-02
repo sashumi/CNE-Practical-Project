@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+  stages {
+    stage('Test Deploy Nginx') {
+      steps {
+        sh '''cd product/kubernetes
+              kubectl delete pods --all -n cne
+              kubectl apply -f namespace.yaml
+              kubectl apply -f nginx-conf.yaml
+              kubectl apply -f nginx-lb.yaml -f nginx.yaml
+              kubectl describe service nginx-lb -n cne
+'''
+      }
+    }
+
+  }
+}

@@ -1,5 +1,6 @@
 FROM mysql:5.7
 
-ENV MYSQL_ROOT_PASSWORD=testrootpass
-
-ADD Create.sql /docker-entrypoint-initdb.d
+#copy sql file into image
+COPY ./Create.sql /docker-entrypoint-initdb.d
+#add sql file into image
+ADD ./Create.sql /docker-entrypoint-initdb.d

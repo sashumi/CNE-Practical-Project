@@ -22,6 +22,7 @@ pipeline {
       steps {
         sh '''mkdir -p ~/.docker
             aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json ~/.docker/config.json
+            cd product
             ansible-playbook image_creator.yml --tags build,push '''
       }
     }

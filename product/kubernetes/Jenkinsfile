@@ -5,9 +5,9 @@ pipeline {
       steps {
         sh '''cd product/kubernetes
               kubectl delete pods --all -n cne
-              kubectl apply -f namespace.yaml
-              kubectl apply -f nginx-conf.yaml
-              kubectl apply -f nginx-lb.yaml -f nginx.yaml
+              kubectl apply -f product/kubernetes/namespace.yaml
+              kubectl apply -f product/kubernetes/nginx-conf.yaml
+              kubectl apply -f product/kubernetes/nginx-lb.yaml -f product/kubernetes/nginx.yaml
               kubectl describe service nginx-lb -n cne
 '''
       }

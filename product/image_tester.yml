@@ -10,7 +10,7 @@
         - image_test
 
     - name: run docker compose to bring up the combination
-      ansible.builtin.command: docker-compose up -d -f /home/ubuntu/docker-compose.yml
+      ansible.builtin.command: cd /home/ubuntu &&  docker-compose up -d
       tags:
         - image_test
 
@@ -33,6 +33,6 @@
         - image_test
 
     - name: bring down docker compose set up
-      ansible.builtin.command: docker-compose down -f /home/ubuntu/docker-compose.yml
+      ansible.builtin.command: cd /home/ubuntu && docker-compose down
       tags:
         - image_test

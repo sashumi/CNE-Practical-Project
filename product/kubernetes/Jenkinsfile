@@ -1,15 +1,24 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('Deploy to EKS') {
       steps {
-        sh '''cd product
+        sh '''cd product/ansible
+              # download ansible vault password
+              aws s3 cp \
+                s3://shamsi-project2/keys/vault_password.txt \
+                vault_password.txt
 
-kubectl delete pods --all -n cne
-kubectl apply -f namespace.yaml
-kubectl apply -f nginx-conf.yaml
-kubectl apply -f nginx-lb.yaml -f nginx.yaml -f flask-app.yaml -f flask-cip.yaml -f backend-cip.yaml -f backend.yaml
-kubectl describe service nginx-lb -n cne'''
+              # setup kubeconfig file
+              aws eks \
+                update-kubeconfig \
+                --region eu-west-1 \
+                --name cne
+
+              # execute deployment playbook
+              ansible-playbook deploy.yml \
+                --vault-password-file vault_password.txt
+'''
       }
     }
 

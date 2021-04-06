@@ -1,0 +1,24 @@
+---
+- name: "step 1 - Create a k8s namespace"
+  community.kubernetes.k8s:
+    name: cne
+    api_version: v1
+    kind: Namespace
+    state: present
+
+- name: "step 2 - create backend services"
+  include: 1-backend.yml
+
+- name: "step 3 - create frontend services"
+  include: 2-frontend.yml
+
+- name: "step 4 - create nginx proxy services"
+  include: 3-nginx.yml
+
+- name: "step 5 - describe nginx lb"
+  ansible.builtin.command: "kubectl describe service nginx-load-balancer -n cne"
+  register: nginx
+
+- name: "step 5 - describe nginx lb"
+  debug:
+    msg: "{{ nginx }}"

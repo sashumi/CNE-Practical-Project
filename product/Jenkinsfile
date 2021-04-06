@@ -1,14 +1,17 @@
 pipeline {
   agent any
   stages {
-    stage('Build test images and push to dockerhub') {
+    stage('Push Test Images to DockerHub') {
       steps {
-        sh '''cd product
-              ansible-playbook image_creator.yml --tags image_test'''
+        sh '''#Setup docker credentials + push test images
+            mkdir -p ~/.docker
+            aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json ~/.docker/config.json
+            cd product
+            ansible-playbook image_creator.yml --tags image_test'''
       }
     }
 
-    stage('Run test activites using images from dockerhub') {
+    stage('pyTest DockerHub Test Images') {
       steps {
         sh '''cd product
               # downloading rsa key from secure s3 bucket to working directory
@@ -29,6 +32,16 @@ pipeline {
                 image_tester.yml\
                 --tags image_test \
                 --private-key id_rsa'''
+      }
+    }
+
+    stage('Tag & Push Latest Images to DockerHub') {
+      steps {
+        sh '''#Setup docker credentials + publish images
+              mkdir -p ~/.docker
+              aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json ~/.docker/config.json
+              cd product
+              ansible-playbook image_creator.yml --tags publish_image'''
       }
     }
   }

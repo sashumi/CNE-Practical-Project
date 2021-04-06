@@ -14,6 +14,10 @@
 
     - name: run backend unit test
       ansible.builtin.command: docker exec backend bash -c "pytest tests/ --cov application"
+      tags:
+        - image_test
 
     - name: run frontend unit test
       ansible.builtin.command: docker exec frontend bash -c "pytest tests/ --cov application"
+      tags:
+        - image_test

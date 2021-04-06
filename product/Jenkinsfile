@@ -11,6 +11,7 @@ pipeline {
     stage('Perform tests using docker Images from Dockerhub') {
       steps {
         sh '''cd product
+              export ANSIBLE_HOST_KEY_CHECKING=False
               ansible-playbook -i test_inventory image_tester.yml --tags image_test '''
       }
     }

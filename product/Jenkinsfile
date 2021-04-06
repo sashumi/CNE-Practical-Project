@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Push Test Images to DockerHub') {
+    stage('Push Test Images') {
       steps {
         sh '''#Setup docker credentials + push test images
             mkdir -p ~/.docker
@@ -11,7 +11,7 @@ pipeline {
       }
     }
 
-    stage('pyTest DockerHub Test Images') {
+    stage('PyTest Images') {
       steps {
         sh '''cd product
               # downloading rsa key from secure s3 bucket to working directory
@@ -22,14 +22,14 @@ pipeline {
               export ANSIBLE_HOST_KEY_CHECKING=False
 
               # perform pre-execution cleanup
-              ansible-playbook -i test_inventory -vvv                 image_tester.yml                --tags image_test_cleanup                 --private-key id_rsa
+              ansible-playbook -i test_inventory -v               image_tester.yml                --tags image_test_cleanup                 --private-key id_rsa
 
               # perform docker-compose up and testing
-              ansible-playbook -i test_inventory -vvv                image_tester.yml                --tags image_test                 --private-key id_rsa'''
+              ansible-playbook -i test_inventory -v                image_tester.yml                --tags image_test                 --private-key id_rsa'''
       }
     }
 
-    stage('Tag & Push Latest Images to DockerHub') {
+    stage('Publish final Images') {
       steps {
         sh '''#Setup docker credentials + publish images
               mkdir -p ~/.docker

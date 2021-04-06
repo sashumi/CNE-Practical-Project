@@ -27,16 +27,10 @@
       tags:
         - image_test
 
-#    - name: Sleep for 30 seconds before frontend test
-#      wait_for:
-#        timeout: 30
-#      tags:
-#        - image_test
-
-#    - name: run frontend unit test
-#      ansible.builtin.command: docker exec frontend bash -c "pytest tests/ --cov application"
-#      tags:
-#        - image_test
+    - name: run frontend unit test
+      ansible.builtin.command: docker exec frontend bash -c "pytest tests/ --cov application"
+      tags:
+        - image_test
 
     - name: cleanup docker images+containers
       ansible.builtin.command: docker-compose down --rmi all --remove-orphans

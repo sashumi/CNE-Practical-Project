@@ -1,0 +1,34 @@
+---
+- hosts: "localhost"
+#  remote_user: ubuntu
+#  become: yes
+
+
+  tasks:
+#    - name: copy backend source
+#      ansible.builtin.copy:
+#        src: product/
+#        dest: product/
+
+    - name: docker-compose down existing services
+      community.docker.docker_compose:
+        project_src: .
+        state: absent
+
+    - name: docker-compose up -d services
+      community.docker.docker_compose:
+        project_src: .
+        build: no
+
+    - name: run backend unit test
+      ansible.builtin.command: docker exec backend bash -c "pytest tests/ --cov application"
+      register: backend_results
+
+    - name: run frontend unit test
+      ansible.builtin.command: docker exec frontend bash -c "pytest tests/ --cov application"
+      register: backend_results
+
+    - name: docker-compose down existing services
+      community.docker.docker_compose:
+        project_src: .
+        state: absent

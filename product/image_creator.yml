@@ -13,6 +13,7 @@
         tag: test
         source: build
       tags:
+        - never
         - image_test
 
     - name: build test version of frontend image
@@ -23,6 +24,7 @@
         tag: test
         source: build
       tags:
+        - never
         - image_test
 
     - name: build test version of database image
@@ -33,6 +35,7 @@
         tag: test
         source: build
       tags:
+        - never
         - image_test
 
 
@@ -45,6 +48,7 @@
         source: local
         push: yes
       tags:
+        - never
         - image_test
 
     - name: push test version of frontend image
@@ -56,6 +60,7 @@
         source: local
         push: yes
       tags:
+        - never
         - image_test
 
     - name: push test version of database image
@@ -67,77 +72,35 @@
         source: local
         push: yes
       tags:
+        - never
         - image_test
 
-#    - name: push backend image
-#      community.docker.docker_image:
-#        name: sashumi/cne_backend
-#        tag: test
-#        source: local
-#        push: yes
-#      tags:
-#        - image_test
-#
-#    - name: push frontend image
-#      community.docker.docker_image:
-#        build:
-#          path: ./frontend
-#        name: sashumi/cne_frontend
-#        tag: test
-#        source: local
-#        push: yes
-#      tags:
-#        - image_test
-#
+    - name: Tag and push backend to docker hub
+      community.docker.docker_image:
+        name: sashumi/cne_backend:test
+        repository: sashumi/cne_backend:latest
+        push: yes
+        source: local
+      tags:
+        - never
+        - publish_image
 
-#    - name: build backend image
-#      community.docker.docker_image:
-#        build:
-#          path: ./backend
-#        name: sashumi/cne_backend
-#        tag: latest
-#        source: build
-#      tags:
-#        - build
-#
-#    - name: build frontend image
-#      community.docker.docker_image:
-#        build:
-#          path: ./frontend
-#        name: sashumi/cne_frontend
-#        tag: latest
-#        source: build
-#      tags:
-#        - build
-#
-#
-#    - name: push backend image
-#      community.docker.docker_image:
-#        name: sashumi/cne_backend
-#        tag: latest
-#        source: local
-#        push: yes
-#      tags:
-#        - push
-#
-#    - name: push frontend image
-#      community.docker.docker_image:
-#        build:
-#          path: ./frontend
-#        name: sashumi/cne_frontend
-#        tag: latest
-#        source: local
-#        push: yes
-#      tags:
-#        - push
-#
-#    - name: push database image
-#      community.docker.docker_image:
-#        build:
-#          path: ./database
-#        name: sashumi/cne_database
-#        tag: latest
-#        source: local
-#        push: yes
-#      tags:
-#        - push
+    - name: Tag and push frontend to docker hub
+      community.docker.docker_image:
+        name: sashumi/cne_frontend:test
+        repository: sashumi/cne_frontend:latest
+        push: yes
+        source: local
+      tags:
+        - never
+        - publish_image
+
+    - name: Tag and push database to docker hub
+      community.docker.docker_image:
+        name: sashumi/cne_database:test
+        repository: sashumi/cne_database:latest
+        push: yes
+        source: local
+      tags:
+        - never
+        - publish_image

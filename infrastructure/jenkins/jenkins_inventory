@@ -1,4 +1,7 @@
 localhost
 
 [jenkins]
-99.80.33.206
+52.18.223.35
+
+[jenkins_elb]
+jenkins-elb-572362932.eu-west-1.elb.amazonaws.com

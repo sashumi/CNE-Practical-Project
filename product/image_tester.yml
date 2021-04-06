@@ -33,6 +33,6 @@
         - image_test
 
     - name: bring down docker compose set up
-      ansible.builtin.command: cd /home/ubuntu && docker-compose down
+      ansible.builtin.command: cd /home/ubuntu && docker-compose down --rmi all --remove-orphans
       tags:
         - image_test

@@ -19,6 +19,8 @@
     - name: Sleep for 30 seconds to allow mysql script execution
       wait_for:
         timeout: 30
+      tags:
+        - image_test
 
     - name: run backend unit test
       ansible.builtin.command: docker exec backend bash -c "pytest tests/ --cov application"
@@ -28,6 +30,8 @@
     - name: Sleep for 30 seconds before frontend test
       wait_for:
         timeout: 30
+      tags:
+        - image_test
 
     - name: run frontend unit test
       ansible.builtin.command: docker exec frontend bash -c "pytest tests/ --cov application"

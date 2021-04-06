@@ -10,12 +10,14 @@ pipeline {
 
     stage('Run test activites usig images from dockerhub') {
       steps {
-        sh '''eval `ssh-agent`
-              ssh-add
-              cd product
+        sh '''cd product
+              aws s3 cp s3://shamsi-project2/keys/id_rsa .
+              chmod 0600 id_rsa
               export ANSIBLE_HOST_KEY_CHECKING=False
-              #https://stackoverflow.com/questions/23074412/how-to-set-host-key-checking-false-in-ansible-inventory-file
-              ansible-playbook -i test_inventory image_tester.yml --tags image_test '''
+              ansible-playbook -i test_inventory \
+                image_tester.yml\
+                --tags image_test \
+                --private-key id_rsa'''
       }
     }
   }

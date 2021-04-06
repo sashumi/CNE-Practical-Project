@@ -1,17 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage('Test Docker Images Locally') {
+    stage('Build test images and push to dockerhub') {
       steps {
         sh '''cd product
               ansible-playbook image_creator.yml --tags image_test'''
       }
     }
 
-    stage('Perform tests using docker Images from Dockerhub') {
+    stage('Run test activites usig images from dockerhub') {
       steps {
-        sh '''cd product
+        sh '''eval `ssh-agent`
+              ssh-add
+              cd product
               export ANSIBLE_HOST_KEY_CHECKING=False
+              #https://stackoverflow.com/questions/23074412/how-to-set-host-key-checking-false-in-ansible-inventory-file
               ansible-playbook -i test_inventory image_tester.yml --tags image_test '''
       }
     }

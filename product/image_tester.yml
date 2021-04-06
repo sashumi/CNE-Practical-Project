@@ -1,6 +1,6 @@
 ---
 - hosts: "10.10.1.181"
-
+  remote_user: "ubuntu"
   tasks:
     # I am planning to use Jenkins-Dockerhub plugin to push images
     # https://github.com/jenkinsci/dockerhub-notification-plugin/blob/master/README.md

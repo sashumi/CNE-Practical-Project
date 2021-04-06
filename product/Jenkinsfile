@@ -22,16 +22,10 @@ pipeline {
               export ANSIBLE_HOST_KEY_CHECKING=False
 
               # perform pre-execution cleanup
-              ansible-playbook -i test_inventory \
-                image_tester.yml\
-                --tags image_test_cleanup \
-                --private-key id_rsa
+              ansible-playbook -i test_inventory -vvv                 image_tester.yml                --tags image_test_cleanup                 --private-key id_rsa
 
               # perform docker-compose up and testing
-              ansible-playbook -i test_inventory \
-                image_tester.yml\
-                --tags image_test \
-                --private-key id_rsa'''
+              ansible-playbook -i test_inventory -vvv                image_tester.yml                --tags image_test                 --private-key id_rsa'''
       }
     }
 
@@ -44,5 +38,6 @@ pipeline {
               ansible-playbook image_creator.yml --tags publish_image'''
       }
     }
+
   }
 }

@@ -5,63 +5,139 @@
     # I am planning to use Jenkins-Dockerhub plugin to push images
     # https://github.com/jenkinsci/dockerhub-notification-plugin/blob/master/README.md
     # https://docs.ansible.com/ansible/latest/collections/community/docker/docker_image_module.html#examples
-    - name: build backend image
+    - name: build test version of backend image
       community.docker.docker_image:
         build:
           path: ./backend
         name: sashumi/cne_backend
-        tag: latest
+        tag: test
         source: build
       tags:
-        - build
+        - image_test
 
-    - name: build frontend image
+    - name: build test version of frontend image
       community.docker.docker_image:
         build:
           path: ./frontend
         name: sashumi/cne_frontend
-        tag: latest
+        tag: test
         source: build
       tags:
-        - build
+        - image_test
 
-    - name: build database image
+    - name: build test version of database image
       community.docker.docker_image:
         build:
           path: ./database
         name: sashumi/cne_database
-        tag: latest
+        tag: test
         source: build
       tags:
-        - build
+        - image_test
 
-    - name: push backend image
+
+    - name: push test version of backend image
       community.docker.docker_image:
+        build:
+          path: ./backend
         name: sashumi/cne_backend
-        tag: latest
+        tag: test
         source: local
         push: yes
       tags:
-        - push
+        - image_test
 
-    - name: push frontend image
+    - name: push test version of frontend image
       community.docker.docker_image:
         build:
           path: ./frontend
         name: sashumi/cne_frontend
-        tag: latest
+        tag: test
         source: local
         push: yes
       tags:
-        - push
+        - image_test
 
-    - name: push database image
+    - name: push test version of database image
       community.docker.docker_image:
         build:
           path: ./database
         name: sashumi/cne_database
-        tag: latest
+        tag: test
         source: local
         push: yes
       tags:
-        - push
+        - image_test
+
+#    - name: push backend image
+#      community.docker.docker_image:
+#        name: sashumi/cne_backend
+#        tag: test
+#        source: local
+#        push: yes
+#      tags:
+#        - image_test
+#
+#    - name: push frontend image
+#      community.docker.docker_image:
+#        build:
+#          path: ./frontend
+#        name: sashumi/cne_frontend
+#        tag: test
+#        source: local
+#        push: yes
+#      tags:
+#        - image_test
+#
+
+#    - name: build backend image
+#      community.docker.docker_image:
+#        build:
+#          path: ./backend
+#        name: sashumi/cne_backend
+#        tag: latest
+#        source: build
+#      tags:
+#        - build
+#
+#    - name: build frontend image
+#      community.docker.docker_image:
+#        build:
+#          path: ./frontend
+#        name: sashumi/cne_frontend
+#        tag: latest
+#        source: build
+#      tags:
+#        - build
+#
+#
+#    - name: push backend image
+#      community.docker.docker_image:
+#        name: sashumi/cne_backend
+#        tag: latest
+#        source: local
+#        push: yes
+#      tags:
+#        - push
+#
+#    - name: push frontend image
+#      community.docker.docker_image:
+#        build:
+#          path: ./frontend
+#        name: sashumi/cne_frontend
+#        tag: latest
+#        source: local
+#        push: yes
+#      tags:
+#        - push
+#
+#    - name: push database image
+#      community.docker.docker_image:
+#        build:
+#          path: ./database
+#        name: sashumi/cne_database
+#        tag: latest
+#        source: local
+#        push: yes
+#      tags:
+#        - push

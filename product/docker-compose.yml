@@ -20,7 +20,7 @@ services:
       protocol: tcp
     environment:
       DATABASE_URI: 'mysql+pymysql://root:testrootpass@mysql/users'
-      TEST_DATABASE_URI: 'mysql+pymysql://root:testrootpass@mysql/users'
+      TEST_DATABASE_URI: 'mysql+pymysql://root:testrootpass@mysql/testdb'
       SECRET_KEY: testrootpass
     links:
         - mysql

@@ -4,26 +4,14 @@ pipeline {
     stage('Test Docker Images Locally') {
       steps {
         sh '''cd product
-              echo "Tear down containers"
-              docker-compose down
-              docker-compose up -d --build
-              sleep 30
-              echo "attempt backend testing"
-              docker exec backend bash -c "pytest tests/ --cov application"
-              echo "skipping frontend testing as it is not working"
-              #docker exec frontend bash -c "pytest tests/ --cov application"
-              docker-compose down
-              echo "Remove interim images"
-              docker rmi -f sashumi/cne_frontend:test sashumi/cne_backend:test sashumi/cne_database:test'''
+              ansible-playbook image_creator.yml --tags image_test'''
       }
     }
 
-    stage('Build & push images to dockerhub') {
+    stage('Perform tests using docker Images from Dockerhub') {
       steps {
-        sh '''mkdir -p ~/.docker
-            aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json ~/.docker/config.json
-            cd product
-            ansible-playbook image_creator.yml --tags build,push '''
+        sh '''cd product
+              ansible-playbook -i test_inventory image_tester.yml --tags image_test '''
       }
     }
   }

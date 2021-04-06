@@ -10,7 +10,9 @@
         - image_test
 
     - name: run docker compose to bring up the combination
-      ansible.builtin.command: cd /home/ubuntu &&  docker-compose up -d
+      ansible.builtin.command: docker-compose up -d
+      args:
+        chdir: /home/ubuntu
       tags:
         - image_test
 
@@ -33,6 +35,9 @@
         - image_test
 
     - name: bring down docker compose set up
-      ansible.builtin.command: cd /home/ubuntu && docker-compose down --rmi all --remove-orphans
+      ansible.builtin.command: docker-compose down --rmi all --remove-orphans
+      args:
+        chdir: /home/ubuntu
       tags:
         - image_test
+        - image_test_cleanup

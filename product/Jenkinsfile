@@ -8,13 +8,17 @@ pipeline {
       }
     }
 
-    stage('Run test activites usig images from dockerhub') {
+    stage('Run test activites using images from dockerhub') {
       steps {
         sh '''cd product
               aws s3 cp s3://shamsi-project2/keys/id_rsa .
-              chmod 0600 id_rsa
-              export ANSIBLE_HOST_KEY_CHECKING=False
-              ansible-playbook -i test_inventory \
+              chmod 0600 id_rsa'''
+        sh '''export ANSIBLE_HOST_KEY_CHECKING=False'''
+        sh '''ansible-playbook -i test_inventory \
+                image_tester.yml\
+                --tags image_test_cleanup \
+                --private-key id_rsa'''
+        sh '''ansible-playbook -i test_inventory \
                 image_tester.yml\
                 --tags image_test \
                 --private-key id_rsa'''

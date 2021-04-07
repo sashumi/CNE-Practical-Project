@@ -2,9 +2,14 @@ version: "3.7"
 services:
   sa_dev:
     build: .
-    image: sa_docker:latest
     container_name: sa_container
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - /c/Users/XXXX/PycharmProjects/CNE-Practical-Project:/project
     environment:
-      AWS_ACCESS_KEY_ID: <put key id>
-      AWS_SECRET_ACCESS_KEY: <put secret access key>
+      AWS_ACCESS_KEY_ID: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      AWS_SECRET_ACCESS_KEY: XXXXXXXXXXXXXXXXXXXXXXXXXXXX
       AWS_DEFAULT_REGION: eu-west-1
+volumes:
+  project:

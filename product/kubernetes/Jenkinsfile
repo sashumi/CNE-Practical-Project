@@ -13,7 +13,7 @@ pipeline {
               aws eks \
                 update-kubeconfig \
                 --region eu-west-1 \
-                --name cne
+                --name prj2cluster
 
               # execute deployment playbook
               ansible-playbook deploy.yml \

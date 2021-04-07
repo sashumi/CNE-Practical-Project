@@ -1,5 +1,5 @@
 ---
-- hosts: "10.10.1.181"
+- hosts: "pytestvm"
   remote_user: "ubuntu"
   tasks:
     - name: copy docker compose file to pytest host

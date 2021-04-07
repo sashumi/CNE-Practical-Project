@@ -1,2 +1,2 @@
 [pytestvm]
-{pytestvm_ip}
+${pytestvm_ip}

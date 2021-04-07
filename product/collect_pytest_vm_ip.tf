@@ -30,7 +30,7 @@ data "aws_instance" "pytest_vm" {
 
 }
 
-resource "local_file" "pytest_inventory" {
+resource "local_file" "test_inventory" {
   content = templatefile("test_inventory.template",
   {
     pytestvm_ip = data.aws_instance.pytest_vm.private_ip

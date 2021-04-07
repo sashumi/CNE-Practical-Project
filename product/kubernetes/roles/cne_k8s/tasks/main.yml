@@ -1,4 +1,9 @@
 ---
+- name: install openshift on the jenkins machine
+  pip:
+    name:
+      - openshift
+
 - name: "step 1 - Create a k8s namespace"
   community.kubernetes.k8s:
     name: cne

@@ -79,19 +79,19 @@ resource "aws_route_table" "rds_route_table" {
 }
 
 
-resource "aws_route_table_association" "rta_jenkins_subnet1" {
+resource "aws_route_table_association" "rta_rds_subnet1" {
   subnet_id = aws_subnet.rds_subnet1.id
   route_table_id = aws_route_table.rds_route_table.id
 
 }
 
-resource "aws_route_table_association" "rta_jenkins_subnet2" {
+resource "aws_route_table_association" "rta_rds_subnet2" {
   subnet_id = aws_subnet.rds_subnet2.id
   route_table_id = aws_route_table.rds_route_table.id
 
 }
 
-resource "aws_route_table_association" "rta_jenkins_subnet3" {
+resource "aws_route_table_association" "rta_rds_subnet3" {
   subnet_id = aws_subnet.rds_subnet3.id
   route_table_id = aws_route_table.rds_route_table.id
 

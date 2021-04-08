@@ -3,14 +3,21 @@ pipeline {
   stages {
     stage('Build PyTest VM') {
       steps {
-        sh '''cd infrastructure/pytest_vm
+        sh '''  echo "Create PyTest VM using Jenkins Ansible Role with limited tag"
+
+                cd infrastructure/pytest_vm
                 terraform init
                 terraform plan
                 terraform apply --auto-approve
+                # the output here is a file called pytest_inventory
+                # the file contains the private IP of the pytest VM
+
                 mkdir -p ssh
                 aws s3 cp s3://shamsi-project2/keys/id_rsa .
                 chmod 0600 id_rsa
+
                 export ANSIBLE_HOST_KEY_CHECKING=False
+
                 ansible-playbook -i pytest_inventory \
                     ../ansible/pytestvm_provisioner.yml \
                     --tags all_repo,docker \
@@ -18,6 +25,7 @@ pipeline {
                     --private-key id_rsa'''
       }
     }
+
     stage('Create RDS Instances') {
       steps {
         sh '''cd infrastructure/rds
@@ -39,12 +47,13 @@ pipeline {
     stage('Create EKS Cluster') {
       steps {
         sh '''cd infrastructure/eks
-              echo "skipping creating EKS cluster"
+              echo "EKS cluster is already created. So silencing this stage."
+
                 # run terraform to ensure eks subnets are present and
                 # then render eks config file for use with eksctl
-                #terraform init
-                #terraform plan
-                #terraform apply --auto-approve
+                 terraform init
+                 terraform plan
+                 terraform apply --auto-approve
 
                 # this will fail if a cluster already exists
                 # ToDo: something to handle pre-existing cluster

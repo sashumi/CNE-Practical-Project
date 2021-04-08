@@ -27,7 +27,7 @@ pipeline {
                 vault_password.txt
 
               # decrypt secure_variables.tf file containing db passes
-                ansible-vault decrypt secure_variables \
+                ansible-vault decrypt secure_variables.tf \
                     --vault-password-file vault_password.txt
 
                 terraform init

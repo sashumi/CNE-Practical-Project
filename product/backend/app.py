@@ -1,3 +1,6 @@
+"""
+some sample text
+"""
 from application import app
 
 

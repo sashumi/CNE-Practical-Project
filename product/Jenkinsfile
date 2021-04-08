@@ -81,6 +81,11 @@ pipeline {
               # ensure namespace exists
                kubectl apply -f namespace.yml
 
+               # get list of existing resources
+               kubectl get pods -n cne
+               kubectl get deployments -n cne
+               kubectl get services -n cne
+
               # deploy backend
                kubectl apply -f 1-backend.yml
 
@@ -91,6 +96,8 @@ pipeline {
                kubectl apply -f 3-nginx.yml
 
                # get list of deployed services
+               kubectl get pods -n cne
+               kubectl get deployments -n cne
                kubectl get services -n cne
 
               '''

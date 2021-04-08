@@ -73,7 +73,7 @@ pipeline {
               aws eks \
                 update-kubeconfig \
                 --region eu-west-1 \
-                --name cne-pp2
+                --name cne-pp
 
               # ensure namespace exists
                kubectl apply -f namespace.yml

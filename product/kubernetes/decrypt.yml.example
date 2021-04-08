@@ -1,0 +1,22 @@
+---
+- hosts: "localhost"
+  vars:
+    test_rds_host: prj2-rds-test.-------------.eu-west-1.rds.amazonaws.com
+    production_rds_host: prj2-rds-production.-----.eu-west-1.rds.amazonaws.com
+    rds_pass: somepass
+    rds_user: admin
+
+  tasks:
+    - template:
+        src: 1-backend.yml.j2
+        dest: 1-backend.yml
+
+    - name: Run SQL commands
+      mysql_db:
+        login_host: "{{ production_rds_host }}"
+        login_password: "{{ rds_pass }}"
+        login_user: "{{ rds_user }}"
+        name: "{{ rds_user }}"
+        state: import
+        target: "../database/Create.sql"
+      register: sql_query_output

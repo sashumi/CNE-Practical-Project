@@ -1,0 +1,46 @@
+---
+# step 2.1 - create deployment for frontend app
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cne-prj2-app
+  namespace: cne
+  labels:
+    app: flask
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+        - name: cne-prj2-app
+          image: sashumi/cne_frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+
+
+---
+# step 2.2 - create loadbalancer service for frontend app
+apiVersion: v1
+kind: Service
+metadata:
+  name: cne-prj2-app
+  namespace: cne
+  labels:
+    app: flask
+
+spec:
+  selector:
+    app: flask
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: ClusterIP

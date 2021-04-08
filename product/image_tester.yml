@@ -1,5 +1,5 @@
 ---
-- hosts: "10.10.1.181"
+- hosts: "pytestvm"
   remote_user: "ubuntu"
   tasks:
     - name: copy docker compose file to pytest host
@@ -8,6 +8,7 @@
         dest: /home/ubuntu/docker-compose.yml
       tags:
         - image_test
+        - image_test_cleanup
 
     - name: run docker compose to bring up the combination
       ansible.builtin.command: docker-compose up -d

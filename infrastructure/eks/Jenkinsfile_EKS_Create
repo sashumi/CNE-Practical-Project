@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+  stages {
+    stage('Create EKS cluster') {
+      steps {
+        sh '''#Create fully managed EKS cluster
+                eksctl create cluster \
+                  --name prj2cluster \
+                  --region eu-west-1 \
+                  --nodegroup-name prj2nodes \
+                  --nodes 1 \
+                  --nodes-min 1 \
+                  --nodes-max 3 \
+                  --node-type t2.micro \
+                  --with-oidc \
+                  --ssh-access \
+                  --ssh-public-key jenkins_keypair \
+                  --managed'''
+      }
+    }
+  }
+}
+
+

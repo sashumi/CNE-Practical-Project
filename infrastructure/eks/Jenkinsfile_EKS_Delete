@@ -1,0 +1,15 @@
+pipeline {
+  agent any
+  stages {
+    stage('Delete EKS cluster') {
+      steps {
+        sh '''#Delete fully managed EKS cluster
+                eksctl delete cluster \
+                  --name prj2cluster \
+                  --region eu-west-1 '''
+      }
+    }
+  }
+}
+
+

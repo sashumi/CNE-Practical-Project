@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+
+  roles:
+    - cne_k8s

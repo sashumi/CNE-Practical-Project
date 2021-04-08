@@ -1,0 +1,50 @@
+---
+# step 1.1 - create deployment for backend app
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: cne
+  labels:
+    app: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: sashumi/cne_backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
+        env:
+        - name: DATABASE_URI
+          value: "mysql+pymysql://{{ rds_user }}:{{ rds_pass }}@{{ production_rds_host }}:3306/users"
+        - name: TEST_DATABASE_URI
+          value: "mysql+pymysql://{{ rds_user }}:{{ rds_pass }}@{{ test_rds_host }}:3306/testdb"
+        - name: secret_key
+          value: "{{ rds_pass }}"
+
+---
+#step 1.2 - create loadbalancer service for backend app
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: cne
+  labels:
+    app: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 5001
+      targetPort: 5001
+  type: ClusterIP

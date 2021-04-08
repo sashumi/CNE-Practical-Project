@@ -1,0 +1,63 @@
+pipeline {
+  agent any
+  stages {
+    stage('Build PyTest VM') {
+      steps {
+        sh '''cd infrastructure/pytest_vm
+                terraform init
+                terraform plan
+                terraform apply --auto-approve
+                mkdir -p ssh
+                aws s3 cp s3://shamsi-project2/keys/id_rsa .
+                chmod 0600 id_rsa
+                export ANSIBLE_HOST_KEY_CHECKING=False
+                ansible-playbook -i pytest_inventory \
+                    ../ansible/pytestvm_provisioner.yml \
+                    --tags all_repo,docker \
+                    --skip-tags jenkins,nginx\
+                    --private-key id_rsa'''
+      }
+    }
+    stage('Create RDS Instances') {
+      steps {
+        sh '''cd infrastructure/rds
+              # download ansible vault password
+              aws s3 cp \
+                s3://shamsi-project2/keys/vault_password.txt \
+                vault_password.txt
+
+              # decrypt secure_variables.tf file containing db passes
+                ansible-vault decrypt secure_variables.tf \
+                    --vault-password-file vault_password.txt
+
+                terraform init
+                terraform plan
+                terraform apply --auto-approve'''
+      }
+    }
+
+    stage('Create EKS Cluster') {
+      steps {
+        sh '''cd infrastructure/eks
+              echo "skipping creating EKS cluster"
+                # run terraform to ensure eks subnets are present and
+                # then render eks config file for use with eksctl
+                terraform init
+                terraform plan
+                terraform apply --auto-approve
+
+                # this will fail if a cluster already exists
+                # ToDo: something to handle pre-existing cluster
+                # eksctl create cluster \
+                # --name cne-pp --region eu-west-1  \
+                # --nodegroup-name cne-pp --nodes 1 \
+                # --nodes-min 1 --nodes-max 3 \
+                # --node-type t2.medium --with-oidc \
+                # --ssh-access --ssh-public-key jenkins_keypair \
+                # --managed
+                # --vpc-public-subnets=subnet-0b965db421106b9d7,subnet-01656b5ab5bda1699,subnet-0c1c37f1913337245
+                '''
+      }
+    }
+  }
+}

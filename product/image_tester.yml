@@ -1,0 +1,42 @@
+---
+- hosts: "pytestvm"
+  remote_user: "ubuntu"
+  tasks:
+    - name: copy docker compose file to pytest host
+      copy:
+        src: docker-compose.yml
+        dest: /home/ubuntu/docker-compose.yml
+      tags:
+        - image_test
+        - image_test_cleanup
+
+    - name: run docker compose to bring up the combination
+      ansible.builtin.command: docker-compose up -d
+      args:
+        chdir: /home/ubuntu
+      tags:
+        - image_test
+
+    - name: Sleep for 30 seconds to allow mysql script execution
+      wait_for:
+        timeout: 30
+      tags:
+        - image_test
+
+    - name: run backend unit test
+      ansible.builtin.command: docker exec backend bash -c "pytest tests/ --cov application"
+      tags:
+        - image_test
+
+    - name: run frontend unit test
+      ansible.builtin.command: docker exec frontend bash -c "pytest tests/ --cov application"
+      tags:
+        - image_test
+
+    - name: cleanup docker images+containers
+      ansible.builtin.command: docker-compose down --rmi all --remove-orphans
+      args:
+        chdir: /home/ubuntu
+      tags:
+        - image_test
+        - image_test_cleanup

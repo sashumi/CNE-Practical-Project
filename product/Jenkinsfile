@@ -1,0 +1,108 @@
+pipeline {
+  agent any
+  stages {
+    stage('Publish test Images') {
+      steps {
+        sh '''#Setup docker credentials + push test images
+            mkdir -p ~/.docker
+            aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json ~/.docker/config.json
+
+            cd product
+            # run ansible playbook to create image and push to docker hub
+            # for testing
+             ansible-playbook image_creator.yml --tags image_test
+            '''
+      }
+    }
+
+    stage('Perform Image Testing') {
+      steps {
+        sh '''cd product
+              # downloading rsa key from secure s3 bucket to working directory
+               aws s3 cp s3://shamsi-project2/keys/id_rsa .
+               chmod 0600 id_rsa
+
+              # run terraform to collect the current private ip of pytest vm
+              # in case it was rebuilt
+               terraform init
+               terraform apply --auto-approve
+
+              # skipping host fingerprint checking to avoid disruption
+               export ANSIBLE_HOST_KEY_CHECKING=False
+
+              # perform pre-execution cleanup
+               ansible-playbook -i test_inventory -v \
+                    image_tester.yml \
+                    --tags image_test_cleanup \
+                    --private-key id_rsa
+
+              # perform docker-compose up and testing
+               ansible-playbook -i test_inventory -v \
+                     image_tester.yml \
+                     --tags image_test \
+                     --private-key id_rsa'''
+      }
+    }
+
+    stage('Publish final Images') {
+      steps {
+        sh '''#Setup docker credentials + publish images
+               mkdir -p ~/.docker
+               aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json \
+               ~/.docker/config.json
+               cd product
+               ansible-playbook image_creator.yml --tags publish_image'''
+      }
+    }
+
+    stage('Deploy to EKS') {
+      steps {
+        sh '''cd product/kubernetes
+              # download ansible vault password
+                aws s3 cp \
+                    s3://shamsi-project2/keys/vault_password.txt \
+                    vault_password.txt
+
+              # decrypt database credentials
+              ansible-vault decrypt decrypt.yml \
+                 --vault-password-file \
+                    vault_password.txt
+
+              # use decrypted playbook to prepare backend config
+              ansible-playbook decrypt.yml
+
+              # setup kubeconfig file
+              eksctl get cluster -n cne-pp
+              aws eks \
+                update-kubeconfig \
+                --region eu-west-1 \
+                --name cne-pp
+
+              # ensure namespace exists
+               kubectl apply -f namespace.yml
+
+               # get list of existing resources
+               kubectl get pods -n cne
+               kubectl get deployments -n cne
+               kubectl get services -n cne
+
+              # deploy backend
+               kubectl apply -f 1-backend.yml
+
+               # deploy frontend
+               kubectl apply -f 2-frontend.yml
+
+               # ensure nginx layer
+               kubectl apply -f 3-nginx.yml
+
+               # get list of deployed services
+               kubectl get pods -n cne
+               kubectl get deployments -n cne
+               kubectl get services -n cne
+
+              '''
+      }
+    }
+
+  }
+}

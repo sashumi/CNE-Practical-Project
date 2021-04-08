@@ -32,7 +32,7 @@ resource "aws_security_group" "ssh_sg" {
 
 resource "aws_security_group" "allow_80_public_to_elb" {
   name = "allow_80_public_to_elb"
-  description = "Allow traffic to jenkins"
+  description = "Allow traffic to ELB"
   vpc_id = aws_vpc.project_vpc.id
 
   ingress {

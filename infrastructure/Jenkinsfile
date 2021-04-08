@@ -28,8 +28,7 @@ pipeline {
 
               # decrypt secure_variables.tf file containing db passes
                 ansible-vault decrypt secure_variables \
-                    --vault-password-file
-                        vault_password.txt
+                    --vault-password-file vault_password.txt
 
                 terraform init
                 terraform plan
@@ -43,9 +42,9 @@ pipeline {
               echo "skipping creating EKS cluster"
                 # run terraform to ensure eks subnets are present and
                 # then render eks config file for use with eksctl
-                #terraform init
-                #terraform plan
-                #terraform apply --auto-approve
+                terraform init
+                terraform plan
+                terraform apply --auto-approve
 
                 # this will fail if a cluster already exists
                 # ToDo: something to handle pre-existing cluster

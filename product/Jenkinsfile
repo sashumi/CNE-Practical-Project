@@ -10,7 +10,7 @@ pipeline {
             cd product
             # run ansible playbook to create image and push to docker hub
             # for testing
-             ansible-playbook image_creator.yml --tags image_test
+             ansible-playbook image_creator.yml --tags image_test -v
             '''
       }
     }
@@ -51,7 +51,7 @@ pipeline {
                aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json \
                ~/.docker/config.json
                cd product
-               ansible-playbook image_creator.yml --tags publish_image'''
+               ansible-playbook image_creator.yml --tags publish_image -v'''
       }
     }
 

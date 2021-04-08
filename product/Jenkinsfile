@@ -69,6 +69,7 @@ pipeline {
                     vault_password.txt
 
               # setup kubeconfig file
+              eksctl get cluster -n cne-pp
               aws eks \
                 update-kubeconfig \
                 --region eu-west-1 \

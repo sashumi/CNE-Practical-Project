@@ -49,7 +49,14 @@ pipeline {
 
                 # this will fail if a cluster already exists
                 # ToDo: something to handle pre-existing cluster
-                #eksctl create cluster --config-file=eks.yml
+                # eksctl create cluster \
+                # --name cne-pp --region eu-west-1  \
+                # --nodegroup-name cne-pp --nodes 1 \
+                # --nodes-min 1 --nodes-max 3 \
+                # --node-type t2.medium --with-oidc \
+                # --ssh-access --ssh-public-key jenkins_keypair \
+                # --managed
+                # --vpc-public-subnets=subnet-0b965db421106b9d7,subnet-01656b5ab5bda1699,subnet-0c1c37f1913337245
                 '''
       }
     }

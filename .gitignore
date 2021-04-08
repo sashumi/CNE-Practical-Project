@@ -6,3 +6,4 @@ dev_docker/docker-compose.yml
 *vault_password.txt*
 *1-backend.yml*
 *config.json*
+*password.txt*

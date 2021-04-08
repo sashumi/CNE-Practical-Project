@@ -8,6 +8,7 @@
         dest: /home/ubuntu/docker-compose.yml
       tags:
         - image_test
+        - image_test_cleanup
 
     - name: run docker compose to bring up the combination
       ansible.builtin.command: docker-compose up -d

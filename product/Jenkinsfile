@@ -90,8 +90,8 @@ pipeline {
                # ensure nginx layer
                kubectl apply -f 3-nginx.yml
 
-               # get nginx load balancer
-               kubectl describe service nginx-load-balancer -n cne
+               # get list of deployed services
+               kubectl get services -n cne
 
               '''
       }

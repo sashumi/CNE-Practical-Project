@@ -12,6 +12,8 @@
         name: sashumi/cne_backend
         tag: test
         source: build
+        force_source: yes
+        force_tag: yes
       tags:
         - never
         - image_test
@@ -23,6 +25,8 @@
         name: sashumi/cne_frontend
         tag: test
         source: build
+        force_source: yes
+        force_tag: yes
       tags:
         - never
         - image_test
@@ -34,6 +38,8 @@
         name: sashumi/cne_database
         tag: test
         source: build
+        force_source: yes
+        force_tag: yes
       tags:
         - never
         - image_test

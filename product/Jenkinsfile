@@ -76,16 +76,16 @@ pipeline {
                 --name cne-pp
 
               # ensure namespace exists
-               kubectl apply -f namespace.yml
+               kubectl apply -f kubernetes/namespace.yml
 
               # deploy backend
-               kubectl apply -f 1-backend.yml
+               kubectl apply -f kubernetes/1-backend.yml
 
                # deploy frontend
-               kubectl apply -f 2-frontend.yml
+               kubectl apply -f kubernetes/2-frontend.yml
 
                # ensure nginx layer
-               kubectl apply -f 2-nginx.yml
+               kubectl apply -f kubernetes/2-nginx.yml
               '''
       }
     }

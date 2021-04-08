@@ -65,8 +65,8 @@ pipeline {
 
               # decrypt database credentials
               ansible-vault decrypt decrypt.yml \
-                 --vault-password-file
-                 vault_password.txt
+                 --vault-password-file \
+                    vault_password.txt
 
               # setup kubeconfig file
               aws eks \

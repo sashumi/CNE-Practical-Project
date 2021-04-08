@@ -88,7 +88,11 @@ pipeline {
                kubectl apply -f 2-frontend.yml
 
                # ensure nginx layer
-               kubectl apply -f 2-nginx.yml
+               kubectl apply -f 3-nginx.yml
+
+               # get nginx load balancer
+               kubectl describe service nginx-load-balancer -n cne
+
               '''
       }
     }

@@ -10,7 +10,7 @@ pipeline {
             cd product
             # run ansible playbook to create image and push to docker hub
             # for testing
-            # ansible-playbook image_creator.yml --tags image_test
+             ansible-playbook image_creator.yml --tags image_test
             '''
       }
     }
@@ -19,39 +19,39 @@ pipeline {
       steps {
         sh '''cd product
               # downloading rsa key from secure s3 bucket to working directory
-              # aws s3 cp s3://shamsi-project2/keys/id_rsa .
-              # chmod 0600 id_rsa
+               aws s3 cp s3://shamsi-project2/keys/id_rsa .
+               chmod 0600 id_rsa
 
               # run terraform to collect the current private ip of pytest vm
               # in case it was rebuilt
-              # terraform init
-              # terraform apply --auto-approve
+               terraform init
+               terraform apply --auto-approve
 
               # skipping host fingerprint checking to avoid disruption
-              # export ANSIBLE_HOST_KEY_CHECKING=False
+               export ANSIBLE_HOST_KEY_CHECKING=False
 
               # perform pre-execution cleanup
-              # ansible-playbook -i test_inventory -v \
-              #      image_tester.yml \
-              #      --tags image_test_cleanup \
-              #      --private-key id_rsa
+               ansible-playbook -i test_inventory -v \
+                    image_tester.yml \
+                    --tags image_test_cleanup \
+                    --private-key id_rsa
 
               # perform docker-compose up and testing
-              # ansible-playbook -i test_inventory -v \
-              #       image_tester.yml \
-              #       --tags image_test \
-              #       --private-key id_rsa'''
+               ansible-playbook -i test_inventory -v \
+                     image_tester.yml \
+                     --tags image_test \
+                     --private-key id_rsa'''
       }
     }
 
     stage('Publish final Images') {
       steps {
         sh '''#Setup docker credentials + publish images
-              # mkdir -p ~/.docker
-              # aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json \
-              # ~/.docker/config.json
-              # cd product
-              # ansible-playbook image_creator.yml --tags publish_image'''
+               mkdir -p ~/.docker
+               aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json \
+               ~/.docker/config.json
+               cd product
+               ansible-playbook image_creator.yml --tags publish_image'''
       }
     }
 

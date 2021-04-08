@@ -10,7 +10,8 @@ pipeline {
             cd product
             # run ansible playbook to create image and push to docker hub
             # for testing
-            ansible-playbook image_creator.yml --tags image_test'''
+            # ansible-playbook image_creator.yml --tags image_test
+            '''
       }
     }
 
@@ -37,8 +38,8 @@ pipeline {
 
               # perform docker-compose up and testing
               ansible-playbook -i test_inventory -v \
-                     image_tester.yml
-                     --tags image_test
+                     image_tester.yml \
+                     --tags image_test \
                      --private-key id_rsa'''
       }
     }

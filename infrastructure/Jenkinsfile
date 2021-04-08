@@ -42,9 +42,9 @@ pipeline {
               echo "skipping creating EKS cluster"
                 # run terraform to ensure eks subnets are present and
                 # then render eks config file for use with eksctl
-                terraform init
-                terraform plan
-                terraform apply --auto-approve
+                #terraform init
+                #terraform plan
+                #terraform apply --auto-approve
 
                 # this will fail if a cluster already exists
                 # ToDo: something to handle pre-existing cluster

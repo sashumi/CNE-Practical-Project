@@ -1,5 +1,5 @@
 ---
-# first setup the reverse proxy config
+# step 3.1 - prepare nginx proxy configurations
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -15,7 +15,7 @@ data:
     }
 
 ---
-# deploy the containers
+# step 3.2 - create deployment for nginx proxies
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -48,7 +48,7 @@ spec:
             name: nginx-proxy-config
 
 ---
-# deploy loadbalancer
+# step 3.3 - create loadbalancer service for nginx proxies
 apiVersion: v1
 kind: Service
 metadata:

@@ -26,10 +26,7 @@ This Project is due on April 9,2021.
 5. [Risk Assessment](https://github.com/sashumi/CNE-Practical-Project/tree/main#risk-assessment)
 6. List of Technologies Used
 7. [Testing](https://github.com/sashumi/CNE-Practical-Project/tree/main#testing)
-    * Postman
-    * Unit testing
-    * Integration
-    * Coverage Report
+    * pytest
 8. [Front-end Design](https://github.com/sashumi/CNE-Practical-Project#front-end)
 9. [Project Retrospective](https://github.com/sashumi/CNE-Practical-Project/tree/main#Project-Retrospective)
     * Notable Achievements
@@ -42,5 +39,5 @@ This Project is due on April 9,2021.
 
 ## Resources link
 
-* CRUD web application presentation [Link](https://github.com/sashumi/CNE-Practical-Project/blob/6d1954accaaa4357e7b9331c9d0712b19de24a1b/SHAMSI%E2%80%99s%20Book%20Corner%20-%20CRUD%20Project.pptx)
+* CNE Practical project presentation [Link](https://github.com/sashumi/CNE-Practical-Project/blob/6d1954accaaa4357e7b9331c9d0712b19de24a1b/SHAMSI%E2%80%99s%20Book%20Corner%20-%20CRUD%20Project.pptx)
 * Risk assessment [Link](https://github.com/sashumi/CNE-Practical-Project/blob/1d196ea4e3cef8dcb66b358ab9315ccf1d6de43f/Risk%20Assessment%20Revised.pdf)

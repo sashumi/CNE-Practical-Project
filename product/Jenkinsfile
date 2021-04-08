@@ -95,6 +95,11 @@ pipeline {
                # ensure nginx layer
                kubectl apply -f 3-nginx.yml
 
+              # initiate rollout without hampering user experiences
+               kubectl rollout restart deployment/backend -n cne
+               kubectl rollout restart deployment/frontend -n cne
+               kubectl rollout restart deployment/nginx -n cne
+
                # get list of deployed services
                kubectl get pods -n cne
                kubectl get deployments -n cne

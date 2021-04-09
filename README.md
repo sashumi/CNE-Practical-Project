@@ -44,8 +44,8 @@ This Project is due on April 9,2021.
 
 ### Jira-Agile board
     Some sample screnshots from Jira-agile board are below:
-    ![1. Learning plan.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/1.%20Learning%20plan.png)
-    ![2. Linux learning.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/2.%20Linux%20learning.png)
+   ![1. Learning plan.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/1.%20Learning%20plan.png)
+   ![2. Linux learning.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/2.%20Linux%20learning.png)
    ![3. Ansible.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/3.%20Ansible.png)
    ![4. Jenkins set up.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/4.%20Jenkins%20set%20up.png)
    ![5. Image build and test planning.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/5.%20Image%20build%20and%20test%20planning.png)

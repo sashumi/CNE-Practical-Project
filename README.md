@@ -39,7 +39,7 @@ This Project is due on April 9,2021.
 
 * CNE Practical project presentation [Link](https://docs.google.com/presentation/d/1hXuTTOvhEixon15tFNLaWaY7T-18X_8m9qRHqRZG_DI/edit?usp=sharing)
 * Risk assessment [Link](https://github.com/sashumi/CNE-Practical-Project/blob/2e88d50a40b0ff07ce053c6de22130048b3b0ca1/Risk%20assessment-%20CNE%20practical%20project.pdf)
-
+* [**Video - CI/CD Rolling Update**](https://web.microsoftstream.com/video/6665e022-cd22-4e6a-85a9-7bf635acb3b3)
 ### Jira-Agile board
     Some sample screnshots from Jira-agile board are below:
    ![1. Learning plan.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/1.%20Learning%20plan.png)

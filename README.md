@@ -71,6 +71,14 @@ This Project is due on April 9,2021.
    
 
 ## Local docker set up & Jenkins VM 
+### Manual steps:
+
+   1. Creating docker container for local development
+   2. Login to the docker container and get the ssh scripts etc.
+   3. Run terraform code to deploy VPC, EC2 VM which will use for Jenkins
+   4. Run ansible script to provision the Jenkins VM
+   5. Run Ansible script to put an elb in front of jenkins.
+
 ![2-create_iam_user_to_deploy_jenkins.png](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/2-create_iam_user_to_deploy_jenkins.png)
 ![3-create_access_keys_form_iam_user_for_jenkins.png](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/3-create_access_keys_form_iam_user_for_jenkins.png)
 ![4-docker-compose-to-bringup-local-docker.png](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/4-docker-compose-to-bringup-local-docker.png)
@@ -113,4 +121,21 @@ This Project is due on April 9,2021.
 ![14. build 15 classic view.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/14.%20build%2015%20classic%20view.png)
 ![15. build 15 source code change.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/15.%20build%2015%20source%20code%20change.png)
 
-## 
+## Project Retrospective
+
+### Notable Achievements
+
+* Fully functional CI pipeline
+* Rolling out update to the system without interrupting user experience
+* Github private repository used for version control
+* Credential store in AWS S3. Also encryted using ansible vault.
+* Database has multiple availability zones.
+
+### Project Shortcomings
+* Impliment read function get by column names
+* During update data, update form should present past data
+* Impliment sorting data in ascending and descending order.
+
+### Future Improvements
+* For security, purpose, user should register first and then Login to interact with the website
+* As a database owner, employees should have separate register, Login and more controlled interaction with the database. 

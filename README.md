@@ -66,6 +66,24 @@ This Project is due on April 9,2021.
    Here is a screen shot of the risk assessment:
 ![risk assessment](https://github.com/sashumi/CNE-Practical-Project/blob/34934c3ca4ada1b942d75fba5f16b63bd51da4a9/docs/Risk%20assessment/Risk%20assessment.png)
 
+## Version control Github
+   ![1-branch_view.PNG](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/1-branch_view.PNG)
+   
+
+## Local docker set up & Jenkins VM 
+![2-create_iam_user_to_deploy_jenkins.png](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/2-create_iam_user_to_deploy_jenkins.png)
+![3-create_access_keys_form_iam_user_for_jenkins.png](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/3-create_access_keys_form_iam_user_for_jenkins.png)
+![4-docker-compose-to-bringup-local-docker.png](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/4-docker-compose-to-bringup-local-docker.png)
+![5-docker-compose-up.PNG](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/5-docker-compose-up.PNG)
+![8-docker-service-dev.PNG](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/8-docker-service-dev.PNG)
+![9-jenkins-and-nginx.PNG](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase1/images/9-jenkins-and-nginx.PNG)
+
+
+## Jenkins-github
+   ![1.1-jenkins_blue_ocean_pat.PNG](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase2/images/1.1-jenkins_blue_ocean_pat.PNG)
+   ![jenkins-aws-credentials.PNG](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase2/images/jenkins-aws-credentials.PNG)
+   ![jenkins-masternode-conig-jenkins.PNG](https://github.com/sashumi/CNE-Practical-Project/blob/f73d400c719d2c016115427ac6c4bdb0e17a69ae/docs/phase2/images/jenkins-masternode-conig-jenkins.PNG)
+
 ## Jenkins-pipeline
    ![1. create jenkins-git pipeline.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/1.%20create%20jenkins-git%20pipeline.png)
    ![2. all infrastructure pipelines.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/2.%20all%20infrastructure%20pipelines.png)

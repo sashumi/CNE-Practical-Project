@@ -15,11 +15,9 @@ This Project is due on April 9,2021.
 ## Table of contents
 
 1. [Resources link](https://github.com/sashumi/CNE-Practical-Project/tree/main#resources-link)
-2. [Brief](https://github.com/sashumi/CNE-Practical-Project/tree/main#brief)
-    * Requirements
-3. [Project Plan](https://github.com/sashumi/CNE-Practical-Project/tree/main#project-plan)
+2. [Jira-Agile board](https://github.com/sashumi/CNE-Practical-Project#jira-agile-board)
     * Jira-Kanban board
-4. [Architecture](https://github.com/sashumi/CNE-Practical-Project/tree/main#architecture)
+3. [Architecture](https://github.com/sashumi/CNE-Practical-Project/tree/main#architecture)
     * Entity Relationship Diagram
     * Use Case Diagram
     * Multi Tier Architecture Diagram
@@ -39,7 +37,7 @@ This Project is due on April 9,2021.
 
 ## Resources link
 
-* CNE Practical project presentation [Link](https://github.com/sashumi/CNE-Practical-Project/blob/6d1954accaaa4357e7b9331c9d0712b19de24a1b/SHAMSI%E2%80%99s%20Book%20Corner%20-%20CRUD%20Project.pptx)
+* CNE Practical project presentation [Link](https://docs.google.com/presentation/d/1hXuTTOvhEixon15tFNLaWaY7T-18X_8m9qRHqRZG_DI/edit?usp=sharing)
 * Risk assessment [Link](https://github.com/sashumi/CNE-Practical-Project/blob/2e88d50a40b0ff07ce053c6de22130048b3b0ca1/Risk%20assessment-%20CNE%20practical%20project.pdf)
 
 ### Jira-Agile board
@@ -132,10 +130,7 @@ This Project is due on April 9,2021.
 * Database has multiple availability zones.
 
 ### Project Shortcomings
-* Impliment read function get by column names
-* During update data, update form should present past data
-* Impliment sorting data in ascending and descending order.
+* 
 
 ### Future Improvements
-* For security, purpose, user should register first and then Login to interact with the website
-* As a database owner, employees should have separate register, Login and more controlled interaction with the database. 
+* 

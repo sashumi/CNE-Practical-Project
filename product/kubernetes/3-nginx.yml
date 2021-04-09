@@ -10,7 +10,7 @@ data:
     server {
     listen 80;
     location / {
-    proxy_pass http://cne-prj2-app:5000;
+    proxy_pass http://frontend:5000;
     }
     }
 

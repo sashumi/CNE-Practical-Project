@@ -42,6 +42,16 @@ This Project is due on April 9,2021.
 * CNE Practical project presentation [Link](https://github.com/sashumi/CNE-Practical-Project/blob/6d1954accaaa4357e7b9331c9d0712b19de24a1b/SHAMSI%E2%80%99s%20Book%20Corner%20-%20CRUD%20Project.pptx)
 * Risk assessment [Link](https://github.com/sashumi/CNE-Practical-Project/blob/2e88d50a40b0ff07ce053c6de22130048b3b0ca1/Risk%20assessment-%20CNE%20practical%20project.pdf)
 
+### Jira-Agile board
+    Some sample screnshots from Jira-agile board are below:
+    ![1. Learning plan.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/1.%20Learning%20plan.png)
+    ![2. Linux learning.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/2.%20Linux%20learning.png)
+   ![3. Ansible.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/3.%20Ansible.png)
+   ![4. Jenkins set up.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/4.%20Jenkins%20set%20up.png)
+   ![5. Image build and test planning.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/5.%20Image%20build%20and%20test%20planning.png)
+   ![6. All epics overview.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/6.%20All%20epics%20overview.png)
+
+
 ## Risk Assessment1
    The risk assessment for this project can be found here: [Link](https://github.com/sashumi/CNE-Practical-Project/blob/2e88d50a40b0ff07ce053c6de22130048b3b0ca1/Risk%20assessment-%20CNE%20practical%20project.pdf)
    Here is a screen shot of the risk assessment:

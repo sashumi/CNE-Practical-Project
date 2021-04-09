@@ -29,8 +29,8 @@ This Project is due on April 9,2021.
 9. [Deployment](https://github.com/sashumi/CNE-Practical-Project#deployment)   
 10. [Project Retrospective](https://github.com/sashumi/CNE-Practical-Project/tree/main#Project-Retrospective)
     * [Notable Achievements](https://github.com/sashumi/CNE-Practical-Project#notable-achievements)
-    * Project Shortcomings
-    * Future Improvements
+    * [Project Shortcomings](https://github.com/sashumi/CNE-Practical-Project/blob/main/README.md#project-shortcomings)
+    * [Future Improvements](https://github.com/sashumi/CNE-Practical-Project/blob/main/README.md#future-improvements)
 11. [Acknowledgmenets](https://github.com/sashumi/CNE-Practical-Project/blob/main/README.md#acknowledgements)
 12. [Author](https://github.com/sashumi/CNE-Practical-Project/blob/main/README.md#author)
 

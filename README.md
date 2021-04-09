@@ -129,10 +129,15 @@ This Project is due on April 9,2021.
 * Database has multiple availability zones.
 
 ### Project Shortcomings
-* 
+* No integration between Jira board and github.
 
 ### Future Improvements
-* 
+* Develop integration between Jira and github.
+
+## Acknowledgements
+
+I would like to express my special thanks gratitude to the QA trainers Nathan Forester, Reece Elder and the QA Academy Cloud Native
+Engineering Feb-21 cohort who supported me through this journey.
 
 ## Author
 

@@ -19,19 +19,19 @@ This Project is due on April 9,2021.
     * Jira-Agile board
 3. [Architecture-diagrams](https://github.com/sashumi/CNE-Practical-Project#architecture-diagrams)
     * [List of Technologies.png](https://github.com/sashumi/CNE-Practical-Project#list-of-technologiespng)
-    * Use Case Diagram
-    * Multi Tier Architecture Diagram
-5. [Risk Assessment](https://github.com/sashumi/CNE-Practical-Project/tree/main#risk-assessment)
-6. List of Technologies Used
-7. [Testing](https://github.com/sashumi/CNE-Practical-Project/tree/main#testing)
-    * pytest
-8. [Front-end Design](https://github.com/sashumi/CNE-Practical-Project#front-end)
-9. [Project Retrospective](https://github.com/sashumi/CNE-Practical-Project/tree/main#Project-Retrospective)
-    * Notable Achievements
+    * [High level architecture.png](https://github.com/sashumi/CNE-Practical-Project#high-level-architecturepng)
+    * [EKS details.png](https://github.com/sashumi/CNE-Practical-Project#3-eks-detailspng)
+4. [Risk Assessment](https://github.com/sashumi/CNE-Practical-Project/tree/main#risk-assessment)
+5. [Version control Github](https://github.com/sashumi/CNE-Practical-Project#version-control-github)
+6. [Local docker set up & Jenkins VM](https://github.com/sashumi/CNE-Practical-Project#local-docker-set-up--jenkins-vm)
+    * [Manual steps](https://github.com/sashumi/CNE-Practical-Project#manual-steps)
+7. [Jenkins-github](https://github.com/sashumi/CNE-Practical-Project#jenkins-github)
+8. [Jenkins-pipeline](https://github.com/sashumi/CNE-Practical-Project#jenkins-pipeline)
+9. [Deployment](https://github.com/sashumi/CNE-Practical-Project#deployment)   
+10. [Project Retrospective](https://github.com/sashumi/CNE-Practical-Project/tree/main#Project-Retrospective)
+    * [Notable Achievements](https://github.com/sashumi/CNE-Practical-Project#notable-achievements)
     * Project Shortcomings
     * Future Improvements
-10. [Licensing & Versioning](https://github.com/sashumi/CNE-Practical-Project#licensing--versioning)
-11. [Acknowledgements](https://github.com/sashumi/CNE-Practical-Project/tree/main#Acknowledgements)
 12. [Author](https://github.com/sashumi/CNE-Practical-Project/tree/main#Author)
 
 
@@ -134,3 +134,8 @@ This Project is due on April 9,2021.
 
 ### Future Improvements
 * 
+
+## Author
+
+Shamsi Ara Shumi
+   

@@ -51,6 +51,15 @@ This Project is due on April 9,2021.
    ![5. Image build and test planning.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/5.%20Image%20build%20and%20test%20planning.png)
    ![6. All epics overview.png](https://github.com/sashumi/CNE-Practical-Project/blob/632cc724a3510ea122bff6b81259986129e34f1d/docs/Jira/6.%20All%20epics%20overview.png)
 
+## Architecture-diagrams
+
+### List of Technologies.png
+   ![1. List of Technologies.png](https://github.com/sashumi/CNE-Practical-Project/blob/77475cb52286b34decc896aa10ad9cf14c135189/docs/diagrams/1.%20List%20of%20Technologies.png)
+### High level architecture.png
+   ![2. High level architecture.png](https://github.com/sashumi/CNE-Practical-Project/blob/77475cb52286b34decc896aa10ad9cf14c135189/docs/diagrams/2.%20High%20level%20architecture.png)
+### 3. EKS details.png
+   ![3. EKS details.png](https://github.com/sashumi/CNE-Practical-Project/blob/77475cb52286b34decc896aa10ad9cf14c135189/docs/diagrams/3.%20EKS%20details.png)
+
 
 ## Risk Assessment1
    The risk assessment for this project can be found here: [Link](https://github.com/sashumi/CNE-Practical-Project/blob/2e88d50a40b0ff07ce053c6de22130048b3b0ca1/Risk%20assessment-%20CNE%20practical%20project.pdf)

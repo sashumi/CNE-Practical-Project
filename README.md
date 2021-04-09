@@ -77,3 +77,22 @@ This Project is due on April 9,2021.
    ![8. successfull terraform run.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/8.%20successfull%20terraform%20run.png)
    ![9. Ansible configuration.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/9.%20Ansible%20configuration.png)
    ![10. ansible task.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/10.%20ansible%20task.png)
+   
+## Deployment
+![1. build,test and deployment.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/1.%20build,test%20and%20deployment.png)
+![2. image build and push.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/2.%20image%20build%20and%20push.png)
+![3. create backend container in pytest vm.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/3.%20create%20backend%20container%20in%20pytest%20vm.png)
+![4. ansible configure pytest vm.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/4.%20ansible%20configure%20pytest%20vm.png)
+![5. adding sleep 30.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/5.%20adding%20sleep%2030.png)
+![6. backend test pass.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/6.%20backend%20test%20pass.png)
+![7. Frontend test pass.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/7.%20Frontend%20test%20pass.png)
+![8.image clean up.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/8.image%20clean%20up.png)
+![9.publish final image.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/9.publish%20final%20image.png)
+![10. deploy to eks.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/10.%20deploy%20to%20eks.png)
+![11. all containers ready.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/11.%20all%20containers%20ready.png)
+![12. Load balancer Ip address.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/12.%20Load%20balancer%20Ip%20address.png)
+![13. build 15 blue ocean view.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/13.%20build%2015%20blue%20ocean%20view.png)
+![14. build 15 classic view.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/14.%20build%2015%20classic%20view.png)
+![15. build 15 source code change.png](https://github.com/sashumi/CNE-Practical-Project/blob/7afb151f19fb5724af4d81a18083d00ac35f9683/docs/deployment/15.%20build%2015%20source%20code%20change.png)
+
+## 

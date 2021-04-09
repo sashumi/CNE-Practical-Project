@@ -29,9 +29,10 @@ This Project is due on April 9,2021.
 9. [Deployment](https://github.com/sashumi/CNE-Practical-Project#deployment)   
 10. [Project Retrospective](https://github.com/sashumi/CNE-Practical-Project/tree/main#Project-Retrospective)
     * [Notable Achievements](https://github.com/sashumi/CNE-Practical-Project#notable-achievements)
-    * Project Shortcomings
-    * Future Improvements
-12. [Author](https://github.com/sashumi/CNE-Practical-Project/tree/main#Author)
+    * [Project Shortcomings](https://github.com/sashumi/CNE-Practical-Project/blob/main/README.md#project-shortcomings)
+    * [Future Improvements](https://github.com/sashumi/CNE-Practical-Project/blob/main/README.md#future-improvements)
+11. [Acknowledgmenets](https://github.com/sashumi/CNE-Practical-Project/blob/main/README.md#acknowledgements)
+12. [Author](https://github.com/sashumi/CNE-Practical-Project/blob/main/README.md#author)
 
 
 ## Resources link
@@ -129,10 +130,15 @@ This Project is due on April 9,2021.
 * Database has multiple availability zones.
 
 ### Project Shortcomings
-* 
+* No integration between Jira board and github.
 
 ### Future Improvements
-* 
+* Develop integration between Jira and github.
+
+## Acknowledgements
+
+I would like to express my special thanks gratitude to the QA trainers Nathan Forester, Reece Elder and the QA Academy Cloud Native
+Engineering Feb-21 cohort who supported me through this journey.
 
 ## Author
 

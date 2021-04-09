@@ -61,7 +61,19 @@ This Project is due on April 9,2021.
    ![3. EKS details.png](https://github.com/sashumi/CNE-Practical-Project/blob/77475cb52286b34decc896aa10ad9cf14c135189/docs/diagrams/3.%20EKS%20details.png)
 
 
-## Risk Assessment1
+## Risk Assessment
    The risk assessment for this project can be found here: [Link](https://github.com/sashumi/CNE-Practical-Project/blob/2e88d50a40b0ff07ce053c6de22130048b3b0ca1/Risk%20assessment-%20CNE%20practical%20project.pdf)
    Here is a screen shot of the risk assessment:
 ![risk assessment](https://github.com/sashumi/CNE-Practical-Project/blob/34934c3ca4ada1b942d75fba5f16b63bd51da4a9/docs/Risk%20assessment/Risk%20assessment.png)
+
+## Jenkins-pipeline
+   ![1. create jenkins-git pipeline.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/1.%20create%20jenkins-git%20pipeline.png)
+   ![2. all infrastructure pipelines.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/2.%20all%20infrastructure%20pipelines.png)
+   ![3. Final 2 pipelines.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/3.%20Final%202%20pipelines.png)
+   ![4. new pipeline start message.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/4.%20new%20pipeline%20start%20message.png)
+   ![5. pipeline after several runs.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/5.%20pipeline%20after%20several%20runs.png)
+   ![6. pipeline initiated by github webhook.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/6.%20pipeline%20initiated%20by%20github%20webhook.png)
+   ![7. infrastructure build by terraform.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/7.%20infrastructure%20build%20by%20terraform.png)
+   ![8. successfull terraform run.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/8.%20successfull%20terraform%20run.png)
+   ![9. Ansible configuration.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/9.%20Ansible%20configuration.png)
+   ![10. ansible task.png](https://github.com/sashumi/CNE-Practical-Project/blob/3929bdfd42706be0738ec7d64047af799f88cb03/docs/jenkins-pipeline/10.%20ansible%20task.png)

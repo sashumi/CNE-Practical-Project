@@ -9,9 +9,6 @@ pipeline {
 
             cd product
 
-            # clean up all existing images to make sure new images are built
-            docker rmi -f $(docker images -q)
-
             # run ansible playbook to create image and push to docker hub
             # for testing
              ansible-playbook image_creator.yml --tags image_test -v
@@ -55,7 +52,12 @@ pipeline {
                aws s3 cp s3://shamsi-project2/keys/docker-auth-config.json \
                ~/.docker/config.json
                cd product
-               ansible-playbook image_creator.yml --tags publish_image -v'''
+               ansible-playbook image_creator.yml --tags publish_image -v
+
+                # clean up all existing images to make sure new images are built
+                docker rmi -f $(docker images -q)
+
+               '''
       }
     }
 

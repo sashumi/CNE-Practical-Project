@@ -16,9 +16,9 @@ This Project is due on April 9,2021.
 
 1. [Resources link](https://github.com/sashumi/CNE-Practical-Project/tree/main#resources-link)
 2. [Jira-Agile board](https://github.com/sashumi/CNE-Practical-Project#jira-agile-board)
-    * Jira-Kanban board
-3. [Architecture](https://github.com/sashumi/CNE-Practical-Project/tree/main#architecture)
-    * Entity Relationship Diagram
+    * Jira-Agile board
+3. [Architecture-diagrams](https://github.com/sashumi/CNE-Practical-Project#architecture-diagrams)
+    * [List of Technologies.png](https://github.com/sashumi/CNE-Practical-Project#list-of-technologiespng)
     * Use Case Diagram
     * Multi Tier Architecture Diagram
 5. [Risk Assessment](https://github.com/sashumi/CNE-Practical-Project/tree/main#risk-assessment)
